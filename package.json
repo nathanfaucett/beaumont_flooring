@@ -28,6 +28,7 @@
     "grunt-jsbeautifier": "^0.2.7"
   },
   "dependencies": {
+    "array-map": "git://github.com/nathanfaucett/array-map.git",
     "color": "git://github.com/nathanfaucett/color.git",
     "constantize": "git://github.com/nathanfaucett/constantize.git",
     "contains_node": "git://github.com/nathanfaucett/contains_node.git",

@@ -48,6 +48,13 @@ BeaumontFlooringThemePrototype.getPalette = function() {
 };
 
 BeaumontFlooringThemePrototype.getStyles = function(palette, spacing) {
-    var styles = {};
+    var styles = {
+        link: {
+            color: palette.canvasColor,
+            hoverColor: palette.primary1Color,
+            focusColor: palette.primary1Color,
+            downColor: palette.primary1Color
+        }
+    };
     return styles;
 };

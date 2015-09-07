@@ -18,25 +18,32 @@ virt.Component.extend(Footer, "Footer");
 
 Footer.contextTypes = {
     theme: propTypes.object.isRequired,
+    size: propTypes.object.isRequired,
     i18n: propTypes.func.isRequired
 };
 
 FooterPrototype = Footer.prototype;
 
 FooterPrototype.getStyles = function() {
-    var theme = this.context.theme,
+    var context = this.context,
+        theme = context.theme,
+        size = context.size,
         styles = {
             footerTop: {
                 padding: "16px 64px",
                 color: theme.palette.canvasColor,
                 background: theme.palette.accent1Color
             },
+            topLeft: {
+                textAlign: "center"
+            },
             address: {
-                width: "180px"
+                width: size.width < 768 ? "inherit" : "180px",
+                textAlign: size.width < 768 ? "center" : "left"
             },
             phone: {
-                marginTop: "1.66em",
-                textAlign: "right"
+                marginTop: size.width < 768 ? "0" : "1.66em",
+                textAlign: size.width < 768 ? "center" : "right"
             },
             footerBottom: {
                 padding: "16px 64px",
@@ -48,6 +55,9 @@ FooterPrototype.getStyles = function() {
             },
             designedby: {
                 textAlign: "right"
+            },
+            ul: {
+                textAlign: "center"
             },
             link: {
                 fontSize: "1em",
@@ -100,7 +110,9 @@ FooterPrototype.render = function() {
                             style: styles.phone
                         }, i18n("footer.phone")))
                     ),
-                    virt.createView("ul",
+                    virt.createView("ul", {
+                            style: styles.ul
+                        },
                         virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/"}, i18n("footer.nav.home"))),
                         virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/about_us"}, i18n("footer.nav.about_us"))),
                         virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/services"}, i18n("footer.nav.services"))),

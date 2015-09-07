@@ -52,7 +52,7 @@ LayoutAppPrototype.getStyles = function() {
         }
     };
 
-    css.boxShadow(styles.content, "0px -32px 32px 4px " + theme.palette.textColor);
+    css.boxShadow(styles.content, "0px -8px 32px 4px " + theme.palette.textColor);
 
     return styles;
 };

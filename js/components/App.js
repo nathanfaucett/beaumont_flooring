@@ -17,27 +17,32 @@ function App(props, children, context) {
     virt.Component.call(this, props, children, context);
 
     this.theme = new Theme();
+    this.size = null;
 
     this.state = {
         render: null
     };
 
     this.onChange = function() {
-        _this.__onChange();
+        return _this.__onChange();
+    };
+
+    this.onResize = function(data, next, messenger) {
+        return _this.__onResize(data, next, messenger);
     };
 }
 virt.Component.extend(App, "App");
 AppPrototype = App.prototype;
 
 App.childContextTypes = {
-    theme: propTypes.object.isRequired
+    theme: propTypes.object.isRequired,
+    size: propTypes.object
 };
 
 AppPrototype.getChildContext = function() {
-    var theme = this.theme;
-
     return {
-        theme: theme
+        theme: this.theme,
+        size: this.size
     };
 };
 
@@ -55,12 +60,28 @@ AppPrototype.__onChange = function() {
     }
 };
 
+AppPrototype.__onResize = function(data, next) {
+    this.size = data;
+    this.forceUpdate();
+    next();
+};
+
 AppPrototype.componentDidMount = function() {
+    var _this = this;
+
     RouteStore.addChangeListener(this.onChange);
+    this.onMessage("virt.resize", this.onResize);
+
+    this.emitMessage("virt.getDeviceDimensions", null, function(error, data) {
+        if (!error) {
+            _this.size = data;
+        }
+    });
 };
 
 AppPrototype.componentWillUnmount = function() {
     RouteStore.removeChangeListener(this.onChange);
+    this.offMessage("virt.resize", this.onResize);
 };
 
 AppPrototype.render = function() {

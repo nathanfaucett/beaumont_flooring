@@ -1,5 +1,7 @@
 var virt = require("virt"),
-    propTypes = require("prop_types");
+    propTypes = require("prop_types"),
+    Link = require("../Link"),
+    HeaderNav = require("./HeaderNav");
 
 
 var HeaderPrototype;
@@ -14,38 +16,87 @@ function Header(props, children, context) {
 virt.Component.extend(Header, "Header");
 
 Header.contextTypes = {
-    i18n: propTypes.func.isRequired
+    i18n: propTypes.func.isRequired,
+    theme: propTypes.object.isRequired,
+    size: propTypes.object.isRequired
 };
 
 HeaderPrototype = Header.prototype;
 
 HeaderPrototype.getStyles = function() {
-    var styles = {
-        root: {
-            position: "relative"
-        },
-        menu: {
-            textAlign: "right"
-        },
-        links: {
-            padding: "8px"
-        }
-    };
+    var context = this.context,
+        theme = context.theme,
+        size = context.size,
+        styles = {
+            top: {
+                color: theme.palette.primary2Color,
+                padding: "16px"
+            },
+            headerRight: {
+                textAlign: size.width < 768 ? "center" : "right"
+            },
+            headerLeft: {
+                textAlign: size.width < 768 ? "center" : "left"
+            },
+            dot: {
+                textAlign: "center"
+            },
+            logo: {
+                padding: "16px 0",
+                textAlign: "center"
+            },
+            nav: {
 
+            },
+            ul: {
+                textAlign: "center"
+            },
+            link: {
+                fontSize: "2em",
+                display: "inline-block",
+                margin: "0 4px",
+                padding: "12px 20px"
+            },
+            linkA: {
+                color: theme.palette.accent2Color
+            }
+        };
+
+    if (size.width > 768) {
+        styles.top.paddingBottom = "16px";
+        styles.logo.padding = "32px 0";
+    }
+    
     return styles;
 };
 
 HeaderPrototype.render = function() {
-    var styles = this.getStyles();
+    var i18n = this.context.i18n,
+        styles = this.getStyles();
 
     return (
         virt.createView("div", {
-                className: "Header",
-                style: styles.root
+                className: "Header"
             },
             virt.createView("div", {
-                style: styles.menu
-            })
+                    style: styles.top
+                },
+                virt.createView("div", {
+                        className: "grid"
+                    },
+                    virt.createView("h1", {className: "col-xs-12 col-sm-12 col-md-5 col-lg-5", style: styles.headerLeft}, i18n("header.commercial")),
+                    virt.createView("h1", {className: "hidden-max-sm col-xs-12 col-sm-12 col-md-2 col-lg-2", style: styles.dot}, "·"),
+                    virt.createView("h1", {className: "col-xs-12 col-sm-12 col-md-5 col-lg-5", style: styles.headerRight}, i18n("header.licensed"))
+                )
+            ),
+            virt.createView("div", {
+                    style: styles.logo
+                },
+                virt.createView("img", {
+                    src: "img/logo.png"
+                })
+            ),
+            virt.createView(HeaderNav)
         )
     );
 };
