@@ -1,8 +1,11 @@
 var virt = require("virt"),
     propTypes = require("prop_types"),
+    arrayMap = require("array-map"),
+    extend = require("extend"),
     css = require("css"),
     Link = require("./Link"),
-    app = require("../index");
+    app = require("../index"),
+    links = require("../utils/links");
 
 
 var FooterPrototype;
@@ -17,9 +20,10 @@ function Footer(props, children, context) {
 virt.Component.extend(Footer, "Footer");
 
 Footer.contextTypes = {
+    i18n: propTypes.func.isRequired,
+    ctx: propTypes.object.isRequired,
     theme: propTypes.object.isRequired,
-    size: propTypes.object.isRequired,
-    i18n: propTypes.func.isRequired
+    size: propTypes.object.isRequired
 };
 
 FooterPrototype = Footer.prototype;
@@ -59,13 +63,15 @@ FooterPrototype.getStyles = function() {
             ul: {
                 textAlign: "center"
             },
+            li: {
+                display: "inline-block",
+                margin: "2px"
+            },
             link: {
                 fontSize: "1em",
                 fontWeight: "bold",
                 background: theme.palette.primary1Color,
-                display: "inline-block",
-                margin: "4px",
-                padding: "8px 20px"
+                padding: "8px 16px"
             }
         };
 
@@ -73,7 +79,10 @@ FooterPrototype.getStyles = function() {
 };
 
 FooterPrototype.render = function() {
-    var i18n = this.context.i18n,
+    var context = this.context,
+        i18n = context.i18n,
+        theme = context.theme,
+        pathname = context.ctx.pathname,
         styles = this.getStyles();
 
     return (
@@ -93,7 +102,7 @@ FooterPrototype.render = function() {
                     })
                 ),
                 virt.createView("div", {
-                        className: "push-md-2 push-lg-2 col-xs-12 col-sm-12 col-md-6 col-lg-6",
+                        className: "push-md-1 push-lg-1 col-xs-12 col-sm-12 col-md-7 col-lg-7",
                         style: styles.topRight
                     },
                     virt.createView("div", {
@@ -113,10 +122,27 @@ FooterPrototype.render = function() {
                     virt.createView("ul", {
                             style: styles.ul
                         },
-                        virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/"}, i18n("footer.nav.home"))),
-                        virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/about_us"}, i18n("footer.nav.about_us"))),
-                        virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/services"}, i18n("footer.nav.services"))),
-                        virt.createView("li", {style: styles.link}, virt.createView(Link, {href: "/contact_us"}, i18n("footer.nav.contact_us")))
+                        arrayMap(links, function(link) {
+                            var active = pathname === link.path,
+                                style = extend({}, styles.link);
+
+                            if (active) {
+                                style.color = theme.palette.primary1Color;
+                                style.background = theme.palette.canvasColor;
+                            }
+
+                            return virt.createView("li", {
+                                    style: styles.li
+                                },
+                                virt.createView(Link, {
+                                    style: style,
+                                    active: active,
+                                    hoverColor: theme.palette.primary1Color,
+                                    hoverBackgroundColor: theme.palette.canvasColor,
+                                    href: link.path
+                                }, i18n(link.name))
+                            )
+                        })
                     )
                 )
             ),

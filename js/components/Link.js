@@ -118,16 +118,16 @@ LinkPrototype.getStyle = function() {
         };
 
     if (state.hover) {
-        styles.color = theme.hoverColor || props.hoverColor || theme.color;
+        styles.color = props.hoverColor || theme.hoverColor || theme.color;
     }
     if (state.focus) {
-        styles.color = theme.focusColor || props.focusColor || theme.color;
+        styles.color = props.focusColor || theme.focusColor || theme.color;
     }
     if (state.down) {
-        styles.color = theme.downColor || props.downColor || theme.color;
+        styles.color = props.downColor || theme.downColor || theme.color;
     }
     if (props.active) {
-        styles.color = theme.activeColor || props.activeColor || theme.color;
+        styles.color = props.activeColor || theme.activeColor || theme.color;
     }
 
     return styles;
@@ -144,6 +144,12 @@ LinkPrototype.render = function() {
     props.onMouseUp = this.onMouseUp;
     props.onFocus = this.onFocus;
     props.onBlur = this.onBlur;
+
+    if (this.state.hover) {
+        if (props.hoverBackgroundColor) {
+            props.style.background = props.hoverBackgroundColor;
+        }
+    }
 
     return virt.createView("a", props, this.children);
 };

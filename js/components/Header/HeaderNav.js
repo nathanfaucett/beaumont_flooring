@@ -2,23 +2,11 @@ var virt = require("virt"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
     extend = require("extend"),
-    Link = require("../Link");
+    Link = require("../Link"),
+    links = require("../../utils/links");
 
 
-var LINKS = [{
-        path: "/",
-        name: "header.nav.home"
-    }, {
-        path: "/about_us",
-        name: "header.nav.about_us"
-    }, {
-        path: "/services",
-        name: "header.nav.services"
-    }, {
-        path: "/contact_us",
-        name: "header.nav.contact_us"
-    }],
-    HeaderNavPrototype;
+var HeaderNavPrototype;
 
 
 module.exports = HeaderNav;
@@ -74,7 +62,7 @@ HeaderNavPrototype.render = function() {
             virt.createView("ul", {
                     style: styles.ul
                 },
-                arrayMap(LINKS, function(link) {
+                arrayMap(links, function(link) {
                     var active = pathname === link.path,
                         style = extend({}, styles.link);
 

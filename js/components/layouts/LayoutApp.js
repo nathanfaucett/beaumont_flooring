@@ -48,11 +48,11 @@ LayoutAppPrototype.getStyles = function() {
         },
         content: {
             margin: "0 auto",
-            maxWidth: "960px"
+            maxWidth: "768px"
         }
     };
 
-    css.boxShadow(styles.content, "0px -8px 32px 4px " + theme.palette.textColor);
+    css.boxShadow(styles.content, "0px -8px 32px 0px " + theme.palette.accent1Color);
 
     return styles;
 };
