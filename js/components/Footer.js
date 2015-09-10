@@ -73,6 +73,15 @@ FooterPrototype.getStyles = function() {
             }
         };
 
+    if (size.width < 768) {
+        styles.copyright.textAlign = "center";
+        styles.designedby.textAlign = "center";
+    }
+
+    if (size.width < 640) {
+        styles.footerTop.padding = styles.footerBottom.padding = "16px 32px";
+    }
+
     return styles;
 };
 

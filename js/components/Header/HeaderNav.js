@@ -28,6 +28,7 @@ HeaderNavPrototype = HeaderNav.prototype;
 
 HeaderNavPrototype.getStyles = function() {
     var context = this.context,
+        size = context.size,
         theme = context.theme,
         styles = {
             ul: {
@@ -42,6 +43,10 @@ HeaderNavPrototype.getStyles = function() {
                 padding: "16px 32px"
             }
         };
+
+    if (size.width < 640) {
+        styles.li.display = "block";
+    }
 
     return styles;
 };

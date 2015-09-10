@@ -104,6 +104,12 @@ HomePrototype.getStyles = function() {
         styles.qualityImg.position = "inherit";
         styles.qualityImg.top = "inherit";
         styles.qualityImg.right = "inherit";
+        styles.qualityImg.width = "inherit";
+        styles.halfText.width = "inherit";
+        styles.secBody.textAlign = "center";
+    }
+
+    if (size.width < 480) {
         styles.qualityImg.width = "100%";
     }
 
@@ -116,7 +122,7 @@ HomePrototype.getStyles = function() {
     css.boxShadow(styles.secHeader, "1px 2px 8px 0px " + theme.palette.disabledColor);
     css.boxShadow(styles.secBody, "1px 2px 8px 0px " + theme.palette.disabledColor);
     css.boxShadow(styles.qualityImg, "1px 2px 8px 0px " + theme.palette.disabledColor);
-    css.transform(styles.qualityImg, "rotate(10)");
+    css.transform(styles.qualityImg, "matrix(0.9, 0.1, -0.1, 0.9, 0, 0)");
 
     return styles;
 };
