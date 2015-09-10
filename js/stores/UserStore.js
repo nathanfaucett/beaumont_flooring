@@ -7,6 +7,8 @@ var cookies = require("cookies"),
 
 var UserStore = module.exports = new Store(),
 
+    LOCALE_KEY = "X-BeaumontFlooring-User.Locale",
+
     consts = UserStore.setConsts([
         "USER_CHANGE_LOCALE"
     ]),
@@ -22,7 +24,7 @@ var UserStore = module.exports = new Store(),
 
 app.on("init", function() {
     defaultLocale = indexOf(app.config.locales, navigatorLanguage) !== -1 ? navigatorLanguage : app.config.locales[0];
-    UserStore.user.locale = defaultLocale;
+    setLocale(defaultLocale);
 });
 
 
@@ -42,13 +44,7 @@ UserStore.fromJSON = function(json) {
 
 UserStore.setLocale = function(value, callback) {
     var changed = setLocale(value);
-
-    if (changed) {
-        updateUser({
-            locale: value
-        }, callback || emptyFunction);
-    }
-
+    (callback || emptyFunction)();
     return changed;
 };
 
@@ -59,7 +55,7 @@ function setLocale(value) {
 
     if (last !== value) {
         UserStore.user.locale = value;
-        cookies.set("")
+        cookies.set(LOCALE_KEY, value);
         return true;
     } else {
         return false;

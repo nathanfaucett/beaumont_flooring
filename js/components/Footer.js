@@ -2,9 +2,7 @@ var virt = require("virt"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
     extend = require("extend"),
-    css = require("css"),
     Link = require("./Link"),
-    app = require("../index"),
     links = require("../utils/links");
 
 
@@ -106,7 +104,7 @@ FooterPrototype.render = function() {
                         style: styles.topRight
                     },
                     virt.createView("div", {
-                            className: "grid",
+                            className: "grid"
                         },
                         virt.createView("div", {
                             className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
@@ -141,7 +139,7 @@ FooterPrototype.render = function() {
                                     hoverBackgroundColor: theme.palette.canvasColor,
                                     href: link.path
                                 }, i18n(link.name))
-                            )
+                            );
                         })
                     )
                 )

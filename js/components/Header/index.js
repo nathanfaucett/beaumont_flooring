@@ -1,6 +1,5 @@
 var virt = require("virt"),
     propTypes = require("prop_types"),
-    Link = require("../Link"),
     HeaderNav = require("./HeaderNav");
 
 
@@ -66,7 +65,7 @@ HeaderPrototype.getStyles = function() {
         styles.top.paddingBottom = "16px";
         styles.logo.padding = "32px 0";
     }
-    
+
     return styles;
 };
 
@@ -84,9 +83,17 @@ HeaderPrototype.render = function() {
                 virt.createView("div", {
                         className: "grid"
                     },
-                    virt.createView("h1", {className: "col-xs-12 col-sm-12 col-md-5 col-lg-5", style: styles.headerLeft}, i18n("header.commercial")),
-                    virt.createView("h1", {className: "hidden-max-sm col-xs-12 col-sm-12 col-md-2 col-lg-2", style: styles.dot}, "·"),
-                    virt.createView("h1", {className: "col-xs-12 col-sm-12 col-md-5 col-lg-5", style: styles.headerRight}, i18n("header.licensed"))
+                    virt.createView("h2", {
+                        className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
+                        style: styles.headerLeft
+                    }, i18n("header.commercial")),
+                    virt.createView("h2", {
+                        className: "hidden-max-sm col-md-1 col-lg-1"
+                    }, "·"),
+                    virt.createView("h2", {
+                        className: "col-xs-12 col-sm-12 col-md-5 col-lg-5",
+                        style: styles.headerRight
+                    }, i18n("header.licensed"))
                 )
             ),
             virt.createView("div", {

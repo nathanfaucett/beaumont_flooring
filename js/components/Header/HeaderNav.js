@@ -29,7 +29,6 @@ HeaderNavPrototype = HeaderNav.prototype;
 HeaderNavPrototype.getStyles = function() {
     var context = this.context,
         theme = context.theme,
-        size = context.size,
         styles = {
             ul: {
                 textAlign: "center"
@@ -78,7 +77,7 @@ HeaderNavPrototype.render = function() {
                             active: active,
                             href: link.path
                         }, i18n(link.name))
-                    )
+                    );
                 })
             )
         )

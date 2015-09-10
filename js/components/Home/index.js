@@ -18,11 +18,14 @@ HomePrototype = Home.prototype;
 
 Home.contextTypes = {
     i18n: propTypes.func.isRequired,
-    theme: propTypes.object.isRequired
+    theme: propTypes.object.isRequired,
+    size: propTypes.object.isRequired
 };
 
 HomePrototype.getStyles = function() {
-    var theme = this.context.theme,
+    var context = this.context,
+        theme = context.theme,
+        size = context.size,
         styles = {
             root: {
                 padding: "48px 0",
@@ -70,7 +73,8 @@ HomePrototype.getStyles = function() {
                 color: theme.palette.canvasColor,
                 position: "absolute",
                 top: "-20px",
-                padding: "8px 64px",
+                padding: "4px 64px",
+                minWidth: "256px",
                 margin: "0"
             },
             secBody: {
@@ -85,15 +89,34 @@ HomePrototype.getStyles = function() {
                 zIndex: "1001",
                 position: "absolute",
                 top: "-32px",
-                right: "-16px"
+                right: "-24px",
+                border: "3px solid " + theme.palette.canvasColor
+            },
+            halfText: {
+                width: "60%"
             },
             clear: {
                 clear: "both"
             }
         };
 
-    css.boxShadow(styles.introImg, "1px 2px 4px 1px " + theme.palette.disabledColor);
-    css.boxShadow(styles.secHeader, "1px 2px 4px 1px " + theme.palette.disabledColor);
+    if (size.width < 768) {
+        styles.qualityImg.position = "inherit";
+        styles.qualityImg.top = "inherit";
+        styles.qualityImg.right = "inherit";
+        styles.qualityImg.width = "100%";
+    }
+
+    if (size.width < 640) {
+        styles.introImg.margin = "4px 25%";
+        styles.introImg.width = "50%";
+    }
+
+    css.boxShadow(styles.introImg, "1px 2px 8px 0px " + theme.palette.disabledColor);
+    css.boxShadow(styles.secHeader, "1px 2px 8px 0px " + theme.palette.disabledColor);
+    css.boxShadow(styles.secBody, "1px 2px 8px 0px " + theme.palette.disabledColor);
+    css.boxShadow(styles.qualityImg, "1px 2px 8px 0px " + theme.palette.disabledColor);
+    css.transform(styles.qualityImg, "rotate(10)");
 
     return styles;
 };
@@ -169,12 +192,16 @@ HomePrototype.render = function() {
                     virt.createView("div", {
                             style: styles.secBody
                         },
-                        virt.createView("p", i18n("home.quality_body")),
+                        virt.createView("p", {
+                            style: styles.halfText
+                        }, i18n("home.quality_body")),
                         virt.createView("img", {
                             style: styles.qualityImg,
                             src: "img/room.png"
                         }),
-                        virt.createView("div", {style: styles.clear})
+                        virt.createView("div", {
+                            style: styles.clear
+                        })
                     )
                 ),
                 virt.createView("div", {

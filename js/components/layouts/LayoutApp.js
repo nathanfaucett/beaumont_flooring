@@ -1,7 +1,6 @@
 var virt = require("virt"),
     css = require("css"),
     propTypes = require("prop_types"),
-    app = require("../../index"),
     Header = require("../Header"),
     Footer = require("../Footer");
 
@@ -43,14 +42,14 @@ LayoutAppPrototype.getChildContext = function() {
 LayoutAppPrototype.getStyles = function() {
     var theme = this.context.theme,
         styles = {
-        background: {
-            background: theme.palette.canvasColor
-        },
-        content: {
-            margin: "0 auto",
-            maxWidth: "768px"
-        }
-    };
+            background: {
+                background: theme.palette.canvasColor
+            },
+            content: {
+                margin: "0 auto",
+                maxWidth: "768px"
+            }
+        };
 
     css.boxShadow(styles.content, "0px -8px 32px 0px " + theme.palette.accent1Color);
 

@@ -1,10 +1,6 @@
-var virt = require("virt"),
-    EventEmitter = require("event_emitter"),
+var EventEmitter = require("event_emitter"),
     page = require("page"),
-    extend = require("extend"),
-    map = require("map"),
     request = require("request"),
-    environment = require("environment"),
     i18n = require("i18n"),
 
     dispatcher = require("./dispatcher"),
@@ -14,10 +10,7 @@ var virt = require("virt"),
 
 
 var app = new EventEmitter(-1),
-
-    pages = {},
-
-    document = environment.document;
+    pages = {};
 
 
 module.exports = app;

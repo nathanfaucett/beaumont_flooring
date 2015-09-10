@@ -1,5 +1,4 @@
 var Theme = require("theme"),
-    color = require("color"),
     css = require("css");
 
 
@@ -47,7 +46,7 @@ BeaumontFlooringThemePrototype.getPalette = function() {
     };
 };
 
-BeaumontFlooringThemePrototype.getStyles = function(palette, spacing) {
+BeaumontFlooringThemePrototype.getStyles = function(palette /*, spacing */ ) {
     var styles = {
         link: {
             color: palette.canvasColor,
