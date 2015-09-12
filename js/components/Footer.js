@@ -39,6 +39,9 @@ FooterPrototype.getStyles = function() {
             topLeft: {
                 textAlign: "center"
             },
+            footerLogo: {
+                paddingTop: "24px"
+            },
             address: {
                 width: size.width < 768 ? "inherit" : "180px",
                 textAlign: size.width < 768 ? "center" : "left"
@@ -105,6 +108,7 @@ FooterPrototype.render = function() {
                         style: styles.topLeft
                     },
                     virt.createView("img", {
+                        style: styles.footerLogo,
                         src: "img/logo.png"
                     })
                 ),
@@ -119,12 +123,12 @@ FooterPrototype.render = function() {
                             className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
                         }, virt.createView("h2", {
                             style: styles.address
-                        }, i18n("footer.address"))),
+                        }, i18n("app.address"))),
                         virt.createView("div", {
                             className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
                         }, virt.createView("h2", {
                             style: styles.phone
-                        }, i18n("footer.phone")))
+                        }, i18n("app.phone")))
                     ),
                     virt.createView("ul", {
                             style: styles.ul

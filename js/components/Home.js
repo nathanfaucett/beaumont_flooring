@@ -68,12 +68,13 @@ HomePrototype.getStyles = function() {
                 margin: "32px 16px 64px"
             },
             secHeader: {
+                textTransform: "uppercase",
                 zIndex: "1000",
                 background: theme.palette.primary1Color,
                 color: theme.palette.canvasColor,
                 position: "absolute",
                 top: "-20px",
-                padding: "4px 64px",
+                padding: "4px 64px 4px 48px",
                 minWidth: "256px",
                 margin: "0"
             },
@@ -118,11 +119,11 @@ HomePrototype.getStyles = function() {
         styles.introImg.width = "50%";
     }
 
-    css.boxShadow(styles.introImg, "1px 2px 8px 0px " + theme.palette.disabledColor);
-    css.boxShadow(styles.secHeader, "1px 2px 8px 0px " + theme.palette.disabledColor);
-    css.boxShadow(styles.secBody, "1px 2px 8px 0px " + theme.palette.disabledColor);
-    css.boxShadow(styles.qualityImg, "1px 2px 8px 0px " + theme.palette.disabledColor);
-    css.transform(styles.qualityImg, "matrix(0.9, 0.1, -0.1, 0.9, 0, 0)");
+    css.boxShadow(styles.introImg, theme.styles.boxShadow);
+    css.boxShadow(styles.secHeader, theme.styles.boxShadow);
+    css.boxShadow(styles.secBody, theme.styles.boxShadow);
+    css.boxShadow(styles.qualityImg, theme.styles.boxShadow);
+    css.transform(styles.qualityImg, "rotate(10deg)");
 
     return styles;
 };
@@ -182,7 +183,7 @@ HomePrototype.render = function() {
                 virt.createView("div", {
                         style: styles.sec
                     },
-                    virt.createView("h2", {
+                    virt.createView("h3", {
                         style: styles.secHeader
                     }, i18n("home.commitment")),
                     virt.createView("p", {
@@ -192,7 +193,7 @@ HomePrototype.render = function() {
                 virt.createView("div", {
                         style: styles.sec
                     },
-                    virt.createView("h2", {
+                    virt.createView("h3", {
                         style: styles.secHeader
                     }, i18n("home.quality")),
                     virt.createView("div", {
@@ -203,7 +204,7 @@ HomePrototype.render = function() {
                         }, i18n("home.quality_body")),
                         virt.createView("img", {
                             style: styles.qualityImg,
-                            src: "img/room.png"
+                            src: "img/room.jpg"
                         }),
                         virt.createView("div", {
                             style: styles.clear
@@ -213,7 +214,7 @@ HomePrototype.render = function() {
                 virt.createView("div", {
                         style: styles.sec
                     },
-                    virt.createView("h2", {
+                    virt.createView("h3", {
                         style: styles.secHeader
                     }, i18n("home.timely")),
                     virt.createView("p", {

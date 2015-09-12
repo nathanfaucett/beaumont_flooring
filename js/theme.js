@@ -53,7 +53,8 @@ BeaumontFlooringThemePrototype.getStyles = function(palette /*, spacing */ ) {
             hoverColor: palette.primary1Color,
             focusColor: palette.primary1Color,
             downColor: palette.primary1Color
-        }
+        },
+        boxShadow: "1px 2px 8px 0px " + palette.disabledColor
     };
     return styles;
 };

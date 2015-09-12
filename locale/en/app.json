@@ -1,5 +1,7 @@
 {
   "app": {
-    "name": "Beaumont Flooring"
+    "name": "Beaumont Flooring",
+    "address": "P.O. Box 1956 Dallas, GA 30132",
+    "phone": "678.708.6615"
   }
 }
