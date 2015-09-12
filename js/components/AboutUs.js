@@ -18,11 +18,13 @@ AboutUsPrototype = AboutUs.prototype;
 
 AboutUs.contextTypes = {
     i18n: propTypes.func.isRequired,
-    theme: propTypes.object.isRequired
+    theme: propTypes.object.isRequired,
+    size: propTypes.object.isRequired
 };
 
 AboutUsPrototype.getStyles = function() {
     var context = this.context,
+        size = context.size,
         theme = context.theme,
         styles = {
             root: {
@@ -102,10 +104,15 @@ AboutUsPrototype.getStyles = function() {
     css.boxShadow(styles.header, theme.styles.boxShadow);
 
     css.boxShadow(styles.bodyImg0, theme.styles.boxShadow);
-    css.transform(styles.bodyImg0, "rotate(-10deg)");
+    css.transform(styles.bodyImg0, "rotate(-6deg)");
 
     css.boxShadow(styles.bodyImg1, theme.styles.boxShadow);
-    css.transform(styles.bodyImg1, "rotate(10deg)");
+    css.transform(styles.bodyImg1, "rotate(6deg)");
+
+    if (size.width < 480) {
+        styles.bodyImgWrap0["float"] = "none";
+        styles.bodyImgWrap1["float"] = "none";
+    }
 
     return styles;
 };

@@ -123,7 +123,7 @@ HomePrototype.getStyles = function() {
     css.boxShadow(styles.secHeader, theme.styles.boxShadow);
     css.boxShadow(styles.secBody, theme.styles.boxShadow);
     css.boxShadow(styles.qualityImg, theme.styles.boxShadow);
-    css.transform(styles.qualityImg, "rotate(10deg)");
+    css.transform(styles.qualityImg, "rotate(6deg)");
 
     return styles;
 };

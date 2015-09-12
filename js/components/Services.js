@@ -19,11 +19,13 @@ ServicesPrototype = Services.prototype;
 
 Services.contextTypes = {
     i18n: propTypes.func.isRequired,
-    theme: propTypes.object.isRequired
+    theme: propTypes.object.isRequired,
+    size: propTypes.object.isRequired
 };
 
 ServicesPrototype.getStyles = function() {
     var context = this.context,
+        size = context.size,
         theme = context.theme,
         styles = {
             root: {
@@ -95,6 +97,16 @@ ServicesPrototype.getStyles = function() {
         borderLeft: "2px solid " + theme.palette.accent2Color,
         borderRight: "2px solid " + theme.palette.accent2Color
     }, styles.li);
+
+    if (size.width < 480) {
+        styles.li.display = "block";
+        styles.liMid = styles.li;
+    } else {
+        styles.liMid = extend({
+            borderLeft: "2px solid " + theme.palette.accent2Color,
+            borderRight: "2px solid " + theme.palette.accent2Color
+        }, styles.li);
+    }
 
     return styles;
 };
