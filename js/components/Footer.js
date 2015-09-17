@@ -66,13 +66,13 @@ FooterPrototype.getStyles = function() {
             },
             li: {
                 display: "inline-block",
-                margin: "2px"
+                marginLeft: "4px"
             },
             link: {
                 fontSize: "1em",
                 fontWeight: "bold",
                 background: theme.palette.primary1Color,
-                padding: "8px 16px"
+                padding: "8px 14px"
             }
         };
 
@@ -133,9 +133,14 @@ FooterPrototype.render = function() {
                     virt.createView("ul", {
                             style: styles.ul
                         },
-                        arrayMap(links, function(link) {
+                        arrayMap(links, function(link, index) {
                             var active = pathname === link.path,
+                                overrideStyles = {},
                                 style = extend({}, styles.link);
+
+                            if (index === 0) {
+                                overrideStyles.marginLeft = "0px";
+                            }
 
                             if (active) {
                                 style.color = theme.palette.primary1Color;
@@ -143,7 +148,7 @@ FooterPrototype.render = function() {
                             }
 
                             return virt.createView("li", {
-                                    style: styles.li
+                                    style: extend({}, styles.li, overrideStyles)
                                 },
                                 virt.createView(Link, {
                                     style: style,
