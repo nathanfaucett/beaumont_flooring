@@ -1,6 +1,5 @@
 var values = require("values"),
-    Store = require("./Store"),
-    app = require("../index");
+    Store = require("./Store");
 
 
 var ResidentialGallaryStore = module.exports = new Store(),
@@ -8,8 +7,30 @@ var ResidentialGallaryStore = module.exports = new Store(),
     _items = {
         1: {
             id: 1,
-            main: "",
+            src: "img/gallary/Hotel/DoubletreeKeyWest1.1_LG.jpg",
+            images: [
+                "img/gallary/Hotel/DoubletreeKeyWest1.2_LG.jpg"
+            ]
+        },
+        2: {
+            id: 2,
+            src: "img/gallary/ConventionCenter/Broward_LG_convention.jpg",
             images: []
+        },
+        3: {
+            id: 3,
+            src: "img/gallary/CountryClub/huntersrun_lg_Country.jpg",
+            images: [
+                "img/gallary/CountryClub/JupiterHills_lg_Country.jpg"
+            ]
+        },
+        4: {
+            id: 4,
+            src: "img/gallary/Hospitality/Hospitality1.1_lg.jpg",
+            images: [
+                "img/gallary/Hospitality/Hospitality1.2_lg.jpg",
+                "img/gallary/Hospitality/Hospitality1.3_lg.jpg"
+            ]
         }
     };
 

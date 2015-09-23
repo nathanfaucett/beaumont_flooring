@@ -1,5 +1,4 @@
 var virt = require("virt"),
-    css = require("css"),
     propTypes = require("prop_types");
 
 
@@ -20,36 +19,28 @@ Testimonial.propTypes = {
     testimonial: propTypes.object.isRequired
 };
 
-Testimonial.contextTypes = {
-    theme: propTypes.object.isRequired,
-    size: propTypes.object.isRequired
-};
-
 TestimonialPrototype.getStyles = function() {
-    var context = this.context,
-        theme = context.theme,
-        size = context.size,
-        styles = {
-            root: {
-                paddingBottom: "16px"
-            },
-            text: {
-                fontSize: "1em",
-                fontStyle: "italic"
-            },
-            author: {
-                fontSize: "0.85em",
-                fontWeight: "bold",
-                marginTop: "1em",
-                marginBottom: "0em"
-            },
-            location: {
-                fontSize: "0.85em",
-                fontWeight: "bold",
-                marginTop: "0em",
-                marginBottom: "0em"
-            }
-        };
+    var styles = {
+        root: {
+            paddingBottom: "16px"
+        },
+        text: {
+            fontSize: "1em",
+            fontStyle: "italic"
+        },
+        author: {
+            fontSize: "0.85em",
+            fontWeight: "bold",
+            marginTop: "1em",
+            marginBottom: "0em"
+        },
+        location: {
+            fontSize: "0.85em",
+            fontWeight: "bold",
+            marginTop: "0em",
+            marginBottom: "0em"
+        }
+    };
 
     return styles;
 };

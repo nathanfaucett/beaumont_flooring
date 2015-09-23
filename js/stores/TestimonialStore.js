@@ -1,6 +1,5 @@
 var values = require("values"),
-    Store = require("./Store"),
-    app = require("../index");
+    Store = require("./Store");
 
 
 var TestimonialStore = module.exports = new Store(),

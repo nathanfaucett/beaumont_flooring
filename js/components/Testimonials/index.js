@@ -112,6 +112,11 @@ TestimonialsPrototype.getStyles = function() {
 
     css.boxShadow(styles.header, theme.styles.boxShadow);
 
+    if (size.width < 640) {
+        styles.ul.padding = "32px 0";
+        styles.ul.margin = "0px";
+    }
+
     return styles;
 };
 

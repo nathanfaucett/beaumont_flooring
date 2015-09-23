@@ -2,6 +2,7 @@ var virt = require("virt"),
     css = require("css"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
+    Item = require("./Item"),
     ResidentialGallaryStore = require("../../stores/ResidentialGallaryStore");
 
 
@@ -30,8 +31,7 @@ ResidentialGallaryPrototype = ResidentialGallary.prototype;
 
 ResidentialGallary.contextTypes = {
     i18n: propTypes.func.isRequired,
-    theme: propTypes.object.isRequired,
-    size: propTypes.object.isRequired
+    theme: propTypes.object.isRequired
 };
 
 ResidentialGallaryPrototype.componentDidMount = function() {
@@ -58,7 +58,6 @@ ResidentialGallaryPrototype.__onChange = function() {
 ResidentialGallaryPrototype.getStyles = function() {
     var context = this.context,
         theme = context.theme,
-        size = context.size,
         styles = {
             root: {
                 padding: "48px 0",
@@ -101,11 +100,13 @@ ResidentialGallaryPrototype.getStyles = function() {
             },
             ul: {
                 background: theme.palette.canvasColor,
-                margin: "0 32px",
-                padding: "32px"
+                margin: "0",
+                padding: "48px 0 32px"
             },
             li: {
-
+                display: "inline-block",
+                padding: "0.999%",
+                width: "32.333%"
             }
         };
 
@@ -154,8 +155,14 @@ ResidentialGallaryPrototype.render = function() {
                     arrayMap(this.state.items, function(item) {
                         return (
                             virt.createView("li", {
-                                key: item.id
-                            })
+                                    key: item.id,
+                                    style: styles.li
+                                },
+                                virt.createView(Item, {
+                                    height: 160,
+                                    item: item
+                                })
+                            )
                         );
                     })
                 )

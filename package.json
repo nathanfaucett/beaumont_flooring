@@ -33,6 +33,7 @@
     "cookies": "git://github.com/nathanfaucett/cookies.git",
     "create-grid.less": "git://github.com/nathanfaucett/create-grid.less.git",
     "css": "git://github.com/nathanfaucett/css.git",
+    "dom_dimensions": "git://github.com/nathanfaucett/dom_dimensions.git",
     "empty_function": "git://github.com/nathanfaucett/empty_function.git",
     "event_emitter": "git://github.com/nathanfaucett/event_emitter.git",
     "extend": "git://github.com/nathanfaucett/extend.git",
