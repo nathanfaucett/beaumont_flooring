@@ -48,9 +48,9 @@ Item.contextTypes = {
 ItemPrototype.componentDidMount = function() {
     var _this = this;
 
-    setTimeout(function() {
+    virtDOM.findDOMNode(this.refs.img).onload = function onLoad() {
         _this.getImageDimensions();
-    });
+    };
 };
 
 ItemPrototype.__onMouseOver = function() {
