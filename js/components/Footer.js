@@ -62,6 +62,7 @@ FooterPrototype.getStyles = function() {
                 textAlign: "right"
             },
             ul: {
+                marginTop: "24px",
                 textAlign: "center"
             },
             li: {
@@ -72,7 +73,7 @@ FooterPrototype.getStyles = function() {
                 fontSize: "1em",
                 fontWeight: "bold",
                 background: theme.palette.primary1Color,
-                padding: "8px 14px"
+                padding: "8px 16px"
             }
         };
 
@@ -100,66 +101,69 @@ FooterPrototype.render = function() {
                 className: "Footer"
             },
             virt.createView("div", {
-                    className: "grid",
                     style: styles.footerTop
                 },
                 virt.createView("div", {
-                        className: "col-xs-12 col-sm-12 col-md-4 col-lg-4",
-                        style: styles.topLeft
-                    },
-                    virt.createView("img", {
-                        style: styles.footerLogo,
-                        src: "img/logo.png"
-                    })
-                ),
-                virt.createView("div", {
-                        className: "push-md-1 push-lg-1 col-xs-12 col-sm-12 col-md-7 col-lg-7",
-                        style: styles.topRight
+                        className: "grid"
                     },
                     virt.createView("div", {
-                            className: "grid"
+                            className: "col-xs-12 col-sm-12 col-md-4 col-lg-4",
+                            style: styles.topLeft
                         },
-                        virt.createView("div", {
-                            className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
-                        }, virt.createView("h2", {
-                            style: styles.address
-                        }, i18n("app.address"))),
-                        virt.createView("div", {
-                            className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
-                        }, virt.createView("h2", {
-                            style: styles.phone
-                        }, i18n("app.phone")))
-                    ),
-                    virt.createView("ul", {
-                            style: styles.ul
-                        },
-                        arrayMap(links, function(link, index) {
-                            var active = pathname === link.path,
-                                overrideStyles = {},
-                                style = extend({}, styles.link);
-
-                            if (index === 0) {
-                                overrideStyles.marginLeft = "0px";
-                            }
-
-                            if (active) {
-                                style.color = theme.palette.primary1Color;
-                                style.background = theme.palette.canvasColor;
-                            }
-
-                            return virt.createView("li", {
-                                    style: extend({}, styles.li, overrideStyles)
-                                },
-                                virt.createView(Link, {
-                                    style: style,
-                                    active: active,
-                                    hoverColor: theme.palette.primary1Color,
-                                    hoverBackgroundColor: theme.palette.canvasColor,
-                                    href: link.path
-                                }, i18n(link.name))
-                            );
+                        virt.createView("img", {
+                            style: styles.footerLogo,
+                            src: "img/logo.png"
                         })
+                    ),
+                    virt.createView("div", {
+                            className: "push-md-1 push-lg-1 col-xs-12 col-sm-12 col-md-7 col-lg-7",
+                            style: styles.topRight
+                        },
+                        virt.createView("div", {
+                                className: "grid"
+                            },
+                            virt.createView("div", {
+                                className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
+                            }, virt.createView("h2", {
+                                style: styles.address
+                            }, i18n("app.address"))),
+                            virt.createView("div", {
+                                className: "col-xs-12 col-sm-12 col-md-6 col-lg-6"
+                            }, virt.createView("h2", {
+                                style: styles.phone
+                            }, i18n("app.phone")))
+                        )
                     )
+                ),
+                virt.createView("ul", {
+                        style: styles.ul
+                    },
+                    arrayMap(links, function(link, index) {
+                        var active = pathname === link.path,
+                            overrideStyles = {},
+                            style = extend({}, styles.link);
+
+                        if (index === 0) {
+                            overrideStyles.marginLeft = "0px";
+                        }
+
+                        if (active) {
+                            style.color = theme.palette.primary1Color;
+                            style.background = theme.palette.canvasColor;
+                        }
+
+                        return virt.createView("li", {
+                                style: extend({}, styles.li, overrideStyles)
+                            },
+                            virt.createView(Link, {
+                                style: style,
+                                active: active,
+                                hoverColor: theme.palette.primary1Color,
+                                hoverBackgroundColor: theme.palette.canvasColor,
+                                href: link.path
+                            }, i18n(link.name))
+                        );
+                    })
                 )
             ),
             virt.createView("div", {

@@ -10,4 +10,10 @@ module.exports = [{
 }, {
     path: "/contact_us",
     name: "nav.contact_us"
+}, {
+    path: "/testimonials",
+    name: "nav.testimonials"
+}, {
+    path: "/residential_gallary",
+    name: "nav.residential_gallary"
 }];

@@ -38,9 +38,9 @@ HeaderNavPrototype.getStyles = function() {
                 display: "inline-block"
             },
             link: {
-                fontSize: "2em",
+                fontSize: "1.25em",
                 color: theme.palette.accent2Color,
-                padding: "16px 32px"
+                padding: "12px 16px"
             }
         };
 

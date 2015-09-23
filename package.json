@@ -47,6 +47,7 @@
     "prop_types": "git://github.com/nathanfaucett/prop_types.git",
     "request": "git://github.com/nathanfaucett/request.git",
     "theme": "git://github.com/nathanfaucett/theme.git",
+    "values": "git://github.com/nathanfaucett/values.git",
     "virt": "git://github.com/nathanfaucett/virt.git"
   }
 }
