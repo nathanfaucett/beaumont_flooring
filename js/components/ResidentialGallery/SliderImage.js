@@ -1,6 +1,6 @@
 var virt = require("virt"),
     virtDOM = require("virt-dom"),
-    css = require("css"),
+    // css = require("css"),
     propTypes = require("prop_types"),
     getImageDimensions = require("../../utils/getImageDimensions");
 
@@ -85,7 +85,7 @@ SliderImagePrototype.getStyles = function() {
             img: img
         };
 
-    css.transition(styles.img, "opacity 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95)");
+    //css.transition(styles.img, "opacity 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95)");
 
     if (state.loaded) {
         dims = this.getImageDimensions();
@@ -102,10 +102,10 @@ SliderImagePrototype.getStyles = function() {
         next.left = (((size.width * 0.5) + (dims.width * 0.5)) | 0) + "px";
     }
 
-    if (props.fading) {
-        css.opacity(styles.img, 0);
+    if (!state.loaded || props.fading) {
+        //css.opacity(styles.img, 0);
     } else {
-        css.opacity(styles.img, 1);
+        //css.opacity(styles.img, 1);
     }
 
     return styles;

@@ -114,6 +114,7 @@ ResidentialGalleryPrototype.getStyles = function() {
 
     if (size.width < 480) {
         styles.li.width = "100%";
+        styles.ul.textAlign = "center";
     }
 
     css.boxShadow(styles.header, theme.styles.boxShadow);
