@@ -106,7 +106,7 @@ ResidentialGallaryPrototype.getStyles = function() {
             li: {
                 display: "inline-block",
                 padding: "0.999%",
-                width: "32.333%"
+                width: "33.333%"
             }
         };
 

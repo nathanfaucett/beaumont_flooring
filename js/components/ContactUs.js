@@ -103,14 +103,14 @@ ContactUsPrototype.getStyles = function() {
             formInput: {
                 padding: "8px",
                 marginBottom: "8px",
-                border: "1px solid " + theme.palette.accent2Color
+                border: "2px solid " + theme.palette.accent2Color
             },
             formTextArea: {
                 minHeight: "256px",
                 resize: "vertical",
                 padding: "8px",
-                marginBottom: "8px",
-                border: "1px solid " + theme.palette.accent2Color
+                marginBottom: "32px",
+                border: "2px solid " + theme.palette.accent2Color
             },
             formSubmit: {
                 display: "block",

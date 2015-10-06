@@ -1,5 +1,8 @@
 var EventEmitter = require("event_emitter"),
     page = require("page"),
+    extend = require("extend"),
+    virtModal = require("virt-modal"),
+    objectMap = require("object-map"),
     request = require("request"),
     i18n = require("i18n"),
 
@@ -10,7 +13,8 @@ var EventEmitter = require("event_emitter"),
 
 
 var app = new EventEmitter(-1),
-    pages = {};
+    pages = {},
+    modals = {};
 
 
 module.exports = app;
@@ -46,6 +50,8 @@ app.init = function(config) {
         });
     });
 
+    dispatcher.register(virtModal.ModalStore.registerCallback);
+
     UserStore.on("changeLocale", function onChangeLocale() {
         page.reload();
     });
@@ -63,8 +69,34 @@ app.registerPage = function(name, render) {
     pages[name] = render;
 };
 
+app.registerModal = function(name, render, onClose) {
+    modals[name] = {
+        name: name,
+        render: render,
+        onClose: onClose
+    };
+};
+
 app.getPage = function(name) {
     return pages[name];
+};
+
+app.getModals = function(ctx) {
+    return objectMap(modals, function eachModal(m) {
+        var result = extend({}, m),
+            modalRender = m.render,
+            modalOnClose = m.onClose;
+
+        result.render = function(modal) {
+            return modalRender(modal, ctx);
+        };
+
+        result.onClose = function(modal) {
+            return modalOnClose(modal, ctx);
+        };
+
+        return result;
+    });
 };
 
 require("./views");

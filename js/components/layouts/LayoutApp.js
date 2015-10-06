@@ -1,6 +1,8 @@
 var virt = require("virt"),
     css = require("css"),
+    virtModal = require("virt-modal"),
     propTypes = require("prop_types"),
+    app = require("../.."),
     Header = require("../Header"),
     Footer = require("../Footer");
 
@@ -69,7 +71,10 @@ LayoutAppPrototype.render = function() {
                 },
                 virt.createView(Header),
                 this.props.render(this.props.ctx),
-                virt.createView(Footer)
+                virt.createView(Footer),
+                virt.createView(virtModal.Modals, {
+                    modals: app.getModals(this.props.ctx)
+                })
             )
         )
     );

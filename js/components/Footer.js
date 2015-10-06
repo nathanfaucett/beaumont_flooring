@@ -73,7 +73,7 @@ FooterPrototype.getStyles = function() {
                 fontSize: "1em",
                 fontWeight: "bold",
                 background: theme.palette.primary1Color,
-                padding: "8px 16px"
+                padding: "8px 10px"
             }
         };
 

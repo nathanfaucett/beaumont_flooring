@@ -7,29 +7,21 @@ var ResidentialGallaryStore = module.exports = new Store(),
     _items = {
         1: {
             id: 1,
-            src: "img/gallary/Hotel/DoubletreeKeyWest1.1_LG.jpg",
+            src: "img/gallary/hotel/thumbnail_1.jpg",
             images: [
-                "img/gallary/Hotel/DoubletreeKeyWest1.2_LG.jpg"
+                "img/gallary/hotel/guest.jpg",
+                "img/gallary/hotel/Guest complete.jpg",
+                "img/gallary/hotel/living complete.jpg",
+                "img/gallary/hotel/thumbnail_2.jpg"
             ]
         },
         2: {
             id: 2,
-            src: "img/gallary/ConventionCenter/Broward_LG_convention.jpg",
-            images: []
-        },
-        3: {
-            id: 3,
-            src: "img/gallary/CountryClub/huntersrun_lg_Country.jpg",
+            src: "img/gallary/house/thumbnail_1.jpg",
             images: [
-                "img/gallary/CountryClub/JupiterHills_lg_Country.jpg"
-            ]
-        },
-        4: {
-            id: 4,
-            src: "img/gallary/Hospitality/Hospitality1.1_lg.jpg",
-            images: [
-                "img/gallary/Hospitality/Hospitality1.2_lg.jpg",
-                "img/gallary/Hospitality/Hospitality1.3_lg.jpg"
+                "img/gallary/house/Living room before.jpg",
+                "img/gallary/house/master before.jpg",
+                "img/gallary/house/master complete.jpg",
             ]
         }
     };

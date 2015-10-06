@@ -1,8 +1,9 @@
 var virt = require("virt"),
     virtDOM = require("virt-dom"),
     css = require("css"),
+    propTypes = require("prop_types"),
     domDimensions = require("dom_dimensions"),
-    propTypes = require("prop_types");
+    getImageDimensions = require("../../utils/getImageDimensions");
 
 
 var ItemPrototype;
@@ -30,6 +31,9 @@ function Item(props, children, context) {
     };
     this.onMouseOut = function(e) {
         return _this.__onMouseOut(e);
+    };
+    this.onClick = function(e) {
+        return _this.__onClick(e);
     };
 }
 virt.Component.extend(Item, "Item");
@@ -67,31 +71,18 @@ ItemPrototype.__onMouseOut = function() {
 
 ItemPrototype.getImageDimensions = function() {
     var node = virtDOM.findDOMNode(this),
-        maxWidth = domDimensions.width(node),
-        maxHeight = domDimensions.height(node),
-
-        imgNode = virtDOM.findDOMNode(this.refs.img),
-        width = imgNode.width,
-        height = imgNode.height,
-        ratio = width / height,
-        w, h, t, l;
-
-    if (ratio > 1) {
-        h = maxHeight;
-        w = maxHeight * ratio;
-        l = (w - maxWidth) * 0.5;
-    } else {
-        w = maxWidth;
-        h = maxWidth / ratio;
-        t = (h - maxHeight) * 0.5;
-    }
+        dims = getImageDimensions(
+            virtDOM.findDOMNode(this.refs.img),
+            domDimensions.width(node),
+            domDimensions.height(node)
+        );
 
     this.setState({
         loaded: true,
-        width: w,
-        height: h,
-        top: -t,
-        left: -l
+        width: dims.width,
+        height: dims.height,
+        top: -dims.top,
+        left: -dims.left
     });
 };
 
@@ -113,7 +104,7 @@ ItemPrototype.getStyles = function() {
                 position: "absolute",
                 width: "100%",
                 height: props.height + "px",
-                background: theme.palette.accent2Color
+                background: theme.palette.accent2Color // theme.palette.canvasColor
             },
             imgWrap: {
                 zIndex: 0,
@@ -149,9 +140,10 @@ ItemPrototype.render = function() {
                 className: "Item",
                 style: styles.root
             },
-            virt.createView("div", {
+            virt.createView("a", {
                 onMouseOver: this.onMouseOver,
                 onMouseOut: this.onMouseOut,
+                href: "/residential_gallary/" + this.props.item.id,
                 style: styles.hover
             }),
             virt.createView("div", {
