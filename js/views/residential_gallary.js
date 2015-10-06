@@ -1,16 +1,16 @@
 var virt = require("virt"),
     app = require("../index"),
-    ResidentialGallary = require("../components/ResidentialGallary"),
+    ResidentialGallery = require("../components/ResidentialGallery"),
     LayoutApp = require("../components/layouts/LayoutApp");
 
 
-app.registerPage("residential_gallary", function renderResidentialGallaryPage(ctx) {
+app.registerPage("residential_gallary", function renderResidentialGalleryPage(ctx) {
     return (
         virt.createView(LayoutApp, {
             ctx: ctx,
             i18n: app.i18n,
             render: function render() {
-                return virt.createView(ResidentialGallary);
+                return virt.createView(ResidentialGallery);
             }
         })
     );

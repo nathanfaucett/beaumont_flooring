@@ -3,16 +3,16 @@ var virt = require("virt"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
     Item = require("./Item"),
-    ResidentialGallaryStore = require("../../stores/ResidentialGallaryStore");
+    ResidentialGalleryStore = require("../../stores/ResidentialGalleryStore");
 
 
-var ResidentialGallaryPrototype;
+var ResidentialGalleryPrototype;
 
 
-module.exports = ResidentialGallary;
+module.exports = ResidentialGallery;
 
 
-function ResidentialGallary(props, children, context) {
+function ResidentialGallery(props, children, context) {
     var _this = this;
 
     virt.Component.call(this, props, children, context);
@@ -25,28 +25,29 @@ function ResidentialGallary(props, children, context) {
         return _this.__onChange();
     };
 }
-virt.Component.extend(ResidentialGallary, "ResidentialGallary");
+virt.Component.extend(ResidentialGallery, "ResidentialGallery");
 
-ResidentialGallaryPrototype = ResidentialGallary.prototype;
+ResidentialGalleryPrototype = ResidentialGallery.prototype;
 
-ResidentialGallary.contextTypes = {
+ResidentialGallery.contextTypes = {
     i18n: propTypes.func.isRequired,
+    size: propTypes.object.isRequired,
     theme: propTypes.object.isRequired
 };
 
-ResidentialGallaryPrototype.componentDidMount = function() {
-    ResidentialGallaryStore.addChangeListener(this.onChange);
+ResidentialGalleryPrototype.componentDidMount = function() {
+    ResidentialGalleryStore.addChangeListener(this.onChange);
     this.__onChange();
 };
 
-ResidentialGallaryPrototype.componentWillUnmount = function() {
-    ResidentialGallaryStore.removeChangeListener(this.onChange);
+ResidentialGalleryPrototype.componentWillUnmount = function() {
+    ResidentialGalleryStore.removeChangeListener(this.onChange);
 };
 
-ResidentialGallaryPrototype.__onChange = function() {
+ResidentialGalleryPrototype.__onChange = function() {
     var _this = this;
 
-    ResidentialGallaryStore.all(function(error, items) {
+    ResidentialGalleryStore.all(function(error, items) {
         if (!error) {
             _this.setState({
                 items: items
@@ -55,9 +56,10 @@ ResidentialGallaryPrototype.__onChange = function() {
     });
 };
 
-ResidentialGallaryPrototype.getStyles = function() {
+ResidentialGalleryPrototype.getStyles = function() {
     var context = this.context,
         theme = context.theme,
+        size = context.size,
         styles = {
             root: {
                 padding: "48px 0",
@@ -110,18 +112,22 @@ ResidentialGallaryPrototype.getStyles = function() {
             }
         };
 
+    if (size.width < 480) {
+        styles.li.width = "100%";
+    }
+
     css.boxShadow(styles.header, theme.styles.boxShadow);
 
     return styles;
 };
 
-ResidentialGallaryPrototype.render = function() {
+ResidentialGalleryPrototype.render = function() {
     var i18n = this.context.i18n,
         styles = this.getStyles();
 
     return (
         virt.createView("div", {
-                className: "ResidentialGallary",
+                className: "ResidentialGallery",
                 style: styles.root
             },
             virt.createView("div", {

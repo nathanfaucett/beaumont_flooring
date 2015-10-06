@@ -1,13 +1,13 @@
 var virt = require("virt"),
     virtModal = require("virt-modal"),
     Modal = require("../components/Modal"),
-    Slider = require("../components/ResidentialGallary/Slider"),
+    Slider = require("../components/ResidentialGallery/Slider"),
     app = require("..");
 
 
 app.registerModal(
     "residential_gallary-slider",
-    function renderResidentialGallarySliderModal(modal, ctx) {
+    function renderResidentialGallerySliderModal(modal, ctx) {
         return (
             virt.createView(Modal, {
                 ctx: ctx,
@@ -21,7 +21,7 @@ app.registerModal(
             })
         );
     },
-    function onCloseResidentialGallarySlider(modal, ctx) {
+    function onCloseResidentialGallerySlider(modal /*, ctx */ ) {
         app.dispatcher.handleViewAction({
             actionType: virtModal.ModalStore.consts.MODAL_CLOSE,
             id: modal.id

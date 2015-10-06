@@ -2,7 +2,7 @@ var values = require("values"),
     Store = require("./Store");
 
 
-var ResidentialGallaryStore = module.exports = new Store(),
+var ResidentialGalleryStore = module.exports = new Store(),
 
     _items = {
         1: {
@@ -21,24 +21,24 @@ var ResidentialGallaryStore = module.exports = new Store(),
             images: [
                 "img/gallary/house/Living room before.jpg",
                 "img/gallary/house/master before.jpg",
-                "img/gallary/house/master complete.jpg",
+                "img/gallary/house/master complete.jpg"
             ]
         }
     };
 
 
-ResidentialGallaryStore.all = function(callback) {
+ResidentialGalleryStore.all = function(callback) {
     callback(undefined, values(_items));
 };
 
-ResidentialGallaryStore.get = function(id, callback) {
+ResidentialGalleryStore.get = function(id, callback) {
     callback(undefined, _items[id]);
 };
 
-ResidentialGallaryStore.toJSON = function() {
+ResidentialGalleryStore.toJSON = function() {
     return _items;
 };
 
-ResidentialGallaryStore.fromJSON = function(json) {
+ResidentialGalleryStore.fromJSON = function(json) {
     _items = json;
 };

@@ -21,10 +21,6 @@ Modal.propTypes = {
     i18n: propTypes.func.isRequired
 };
 
-Modal.contextTypes = {
-    theme: propTypes.object.isRequired
-};
-
 Modal.childContextTypes = {
     ctx: propTypes.object.isRequired,
     modal: propTypes.object.isRequired,
@@ -50,12 +46,11 @@ ModalPrototype.componentWillUnmount = function() {
 };
 
 ModalPrototype.getStyles = function() {
-    var theme = this.context.theme.styles.modal,
-        styles = {
-            root: {
-                position: "relative"
-            }
-        };
+    var styles = {
+        root: {
+            position: "relative"
+        }
+    };
 
     return styles;
 };

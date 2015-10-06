@@ -1,6 +1,3 @@
-var domDimensions = require("dom_dimensions");
-
-
 module.exports = getImageDimensions;
 
 
@@ -14,13 +11,18 @@ function getImageDimensions(node, maxWidth, maxHeight, noBiggerThanSize) {
         l = 0;
 
     if (noBiggerThanSize) {
-        maxWidth = Math.min(width, maxWidth);
-        maxHeight = Math.min(height, maxHeight);
+        if ((maxWidth / maxHeight) > 1) {
+            if (maxHeight > height) {
+                maxHeight = height;
+            }
 
-        if (ratio < 1) {
             h = maxHeight;
             w = maxHeight * ratio;
         } else {
+            if (maxWidth > width) {
+                maxWidth = width;
+            }
+
             w = maxWidth;
             h = maxWidth / ratio;
         }
