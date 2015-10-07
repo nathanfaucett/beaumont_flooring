@@ -1,6 +1,7 @@
 var virt = require("virt"),
     css = require("css"),
-    propTypes = require("prop_types");
+    propTypes = require("prop_types"),
+    Link = require("./Link");
 
 
 var HomePrototype;
@@ -129,7 +130,9 @@ HomePrototype.getStyles = function() {
 };
 
 HomePrototype.render = function() {
-    var i18n = this.context.i18n,
+    var context = this.context,
+        i18n = context.i18n,
+        theme = context.theme,
         styles = this.getStyles();
 
     return (
@@ -187,8 +190,15 @@ HomePrototype.render = function() {
                         style: styles.secHeader
                     }, i18n("home.commitment")),
                     virt.createView("p", {
-                        style: styles.secBody
-                    }, i18n("home.commitment_body"))
+                            style: styles.secBody
+                        },
+                        i18n("home.commitment_body"),
+                        virt.createView(Link, {
+                            color: theme.palette.accent2Color,
+                            href: "/about_us"
+                        }, i18n("home.commitment_body_here")),
+                        "."
+                    )
                 ),
                 virt.createView("div", {
                         style: styles.sec

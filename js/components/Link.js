@@ -113,7 +113,7 @@ LinkPrototype.getStyle = function() {
         theme = this.context.theme.styles.link,
         state = this.state,
         styles = {
-            color: theme.color,
+            color: props.color || theme.color,
             textDecoration: "none"
         };
 
