@@ -154,7 +154,7 @@ ResidentialGalleryPrototype.render = function() {
                 virt.createView("h3", {
                         style: styles.header
                     },
-                    i18n("residential_gallary.header")
+                    i18n("residential_gallery.header")
                 ),
                 virt.createView("ul", {
                         style: styles.ul

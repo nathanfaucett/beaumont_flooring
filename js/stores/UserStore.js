@@ -7,7 +7,7 @@ var cookies = require("cookies"),
 
 var UserStore = module.exports = new Store(),
 
-    LOCALE_KEY = "X-BeaumontFlooring-User.Locale",
+    LOCALE_KEY = "X-BomontFlooring-User.Locale",
 
     consts = UserStore.setConsts([
         "USER_CHANGE_LOCALE"

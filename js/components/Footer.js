@@ -180,7 +180,14 @@ FooterPrototype.render = function() {
                         className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
                         style: styles.designedby
                     },
-                    virt.createView("p", "© " + i18n("footer.designedby"))
+                    virt.createView("p",
+                        virt.createView("span", "© "),
+                        virt.createView("span", i18n("footer.designedby")),
+                        virt.createView(Link, {
+                            target: "_blank",
+                            href: "http://www.thinkitdesign.com"
+                        }, i18n("footer.thinkit"))
+                    )
                 )
             )
         )

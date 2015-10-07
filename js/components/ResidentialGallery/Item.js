@@ -143,7 +143,7 @@ ItemPrototype.render = function() {
             virt.createView("a", {
                 onMouseOver: this.onMouseOver,
                 onMouseOut: this.onMouseOut,
-                href: "/residential_gallary/" + this.props.item.id,
+                href: "/residential_gallery/" + this.props.item.id,
                 style: styles.hover
             }),
             virt.createView("div", {

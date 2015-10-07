@@ -6,7 +6,7 @@ var virt = require("virt"),
 
 
 app.registerModal(
-    "residential_gallary-slider",
+    "residential_gallery-slider",
     function renderResidentialGallerySliderModal(modal, ctx) {
         return (
             virt.createView(Modal, {
@@ -26,6 +26,6 @@ app.registerModal(
             actionType: virtModal.ModalStore.consts.MODAL_CLOSE,
             id: modal.id
         });
-        app.page.go("/residential_gallary");
+        app.page.go("/residential_gallery");
     }
 );

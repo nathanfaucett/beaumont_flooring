@@ -4,16 +4,16 @@ var virtModal = require("virt-modal"),
 
 
 app.router.route(
-    "/residential_gallary/:id[0-9]",
+    "/residential_gallery/:id[0-9]",
     function handleRoot(ctx, next) {
         app.dispatcher.handleViewAction({
             actionType: RouteStore.consts.ROUTE_UPDATE,
-            state: "residential_gallary",
+            state: "residential_gallery",
             ctx: ctx
         });
         app.dispatcher.handleViewAction({
             actionType: virtModal.ModalStore.consts.MODAL_OPEN,
-            name: "residential_gallary-slider",
+            name: "residential_gallery-slider",
             modalDialog: {
                 margin: "0px",
                 width: "100%"

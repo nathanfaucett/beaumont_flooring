@@ -1,23 +1,16 @@
 {
-  "name": "beaumont_flooring",
+  "name": "bomont_flooring",
   "version": "0.0.1",
-  "description": "beaumont flooring",
+  "description": "bomont flooring",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nathanfaucett/beaumont_flooring.git"
+    "url": "https://github.com/nathanfaucett/bomont_flooring.git"
   },
   "main": "js/index.js",
   "style": "css/index.less",
-  "scripts": {
-    "example": "comn -f example/src/index.js -o example/index.js",
-    "test": "npm run test-node",
-    "test-node": "node ./test | ./node_modules/.bin/tap-spec",
-    "test-node-raw": "node ./test",
-    "test-browser-local": "zuul --local 8080 --ui tape -- ./test"
-  },
   "keywords": [
-    "beaumont_flooring",
-    "beaumont_flooring.js"
+    "bomont_flooring",
+    "bomont_flooring.js"
   ],
   "author": "Nathan Faucett",
   "license": "MIT",

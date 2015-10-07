@@ -2,22 +2,22 @@ var Theme = require("theme"),
     css = require("css");
 
 
-var BeaumontFlooringThemePrototype;
+var BomontFlooringThemePrototype;
 
 
-module.exports = BeaumontFlooringTheme;
+module.exports = BomontFlooringTheme;
 
 
-function BeaumontFlooringTheme() {
+function BomontFlooringTheme() {
 
     Theme.call(this);
 
     this.fontFamily = "Roboto, sans-serif";
 }
-Theme.extend(BeaumontFlooringTheme, "BeaumontFlooringTheme");
-BeaumontFlooringThemePrototype = BeaumontFlooringTheme.prototype;
+Theme.extend(BomontFlooringTheme, "BomontFlooringTheme");
+BomontFlooringThemePrototype = BomontFlooringTheme.prototype;
 
-BeaumontFlooringThemePrototype.getSpacing = function() {
+BomontFlooringThemePrototype.getSpacing = function() {
     return {
         iconSize: 24,
         desktopGutter: 24,
@@ -33,7 +33,7 @@ BeaumontFlooringThemePrototype.getSpacing = function() {
     };
 };
 
-BeaumontFlooringThemePrototype.getPalette = function() {
+BomontFlooringThemePrototype.getPalette = function() {
     return {
         primary1Color: "#ff002d",
         primary2Color: "#dedede",
@@ -46,7 +46,7 @@ BeaumontFlooringThemePrototype.getPalette = function() {
     };
 };
 
-BeaumontFlooringThemePrototype.getStyles = function(palette /*, spacing */ ) {
+BomontFlooringThemePrototype.getStyles = function(palette /*, spacing */ ) {
     var styles = {
         link: {
             color: palette.canvasColor,

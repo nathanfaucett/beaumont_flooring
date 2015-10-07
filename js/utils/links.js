@@ -14,6 +14,6 @@ module.exports = [{
     path: "/testimonials",
     name: "nav.testimonials"
 }, {
-    path: "/residential_gallary",
-    name: "nav.residential_gallary"
+    path: "/residential_gallery",
+    name: "nav.residential_gallery"
 }];

@@ -3,11 +3,11 @@ var RouteStore = require("../stores/RouteStore"),
 
 
 app.router.route(
-    "/residential_gallary",
+    "/residential_gallery",
     function handleRoot(ctx, next) {
         app.dispatcher.handleViewAction({
             actionType: RouteStore.consts.ROUTE_UPDATE,
-            state: "residential_gallary",
+            state: "residential_gallery",
             ctx: ctx
         });
         ctx.end();

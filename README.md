@@ -1,4 +1,4 @@
-beaumont_flooring
+bomont_flooring
 =======
 
-beaumont flooring virt backend
+bomont flooring virt backend

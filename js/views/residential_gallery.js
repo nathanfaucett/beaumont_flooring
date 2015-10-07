@@ -4,7 +4,7 @@ var virt = require("virt"),
     LayoutApp = require("../components/layouts/LayoutApp");
 
 
-app.registerPage("residential_gallary", function renderResidentialGalleryPage(ctx) {
+app.registerPage("residential_gallery", function renderResidentialGalleryPage(ctx) {
     return (
         virt.createView(LayoutApp, {
             ctx: ctx,
