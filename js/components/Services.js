@@ -62,7 +62,8 @@ ServicesPrototype.getStyles = function() {
                 textTransform: "uppercase",
                 fontSize: "1.65em",
                 padding: "0 16px",
-                display: "inline-block"
+                display: "inline-block",
+                borderRight: "2px solid " + theme.palette.accent2Color
             },
             body: {
                 zIndex: "999",
@@ -100,10 +101,8 @@ ServicesPrototype.getStyles = function() {
 
     css.boxShadow(styles.secHeader, theme.styles.boxShadow);
 
-    styles.liMid = extend({
-        borderLeft: "2px solid " + theme.palette.accent2Color,
-        borderRight: "2px solid " + theme.palette.accent2Color
-    }, styles.li);
+    styles.liEnd = extend({}, styles.li);
+    delete styles.liEnd.borderRight;
 
     if (size.width < 480) {
         styles.li.display = "block";
@@ -177,13 +176,13 @@ ServicesPrototype.render = function() {
                         style: styles.li
                     }, i18n("services.header.carpet")),
                     virt.createView("li", {
-                        style: styles.liMid
+                        style: styles.li
                     }, i18n("services.header.carpet_tile")),
                     virt.createView("li", {
                         style: styles.li
                     }, i18n("services.header.vinyl")),
                     virt.createView("li", {
-                        style: styles.li
+                        style: styles.liEnd
                     }, i18n("services.header.hardwood"))
                 )
             ),
