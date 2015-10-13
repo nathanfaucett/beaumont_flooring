@@ -7,22 +7,18 @@ var ResidentialGalleryStore = module.exports = new Store(),
     _items = {
         1: {
             id: 1,
-            src: "img/gallery/hotel/thumbnail_1.jpg",
-            images: [
-                "img/gallery/hotel/guest.jpg",
-                "img/gallery/hotel/Guest complete.jpg",
-                "img/gallery/hotel/living complete.jpg",
-                "img/gallery/hotel/thumbnail_2.jpg"
-            ]
+            thumbnail: "img/gallery/Guest complete.jpg",
+            image: "img/gallery/GuestRoom.jpg"
         },
         2: {
             id: 2,
-            src: "img/gallery/house/thumbnail_1.jpg",
-            images: [
-                "img/gallery/house/Living room before.jpg",
-                "img/gallery/house/master before.jpg",
-                "img/gallery/house/master complete.jpg"
-            ]
+            thumbnail: "img/gallery/living complete.jpg",
+            image: "img/gallery/livingroom.jpg"
+        },
+        3: {
+            id: 3,
+            thumbnail: "img/gallery/master complete.jpg",
+            image: "img/gallery/masterbed.jpg"
         }
     };
 

@@ -152,7 +152,7 @@ ItemPrototype.render = function() {
                 virt.createView("img", {
                     style: styles.img,
                     ref: "img",
-                    src: item.src
+                    src: item.thumbnail
                 })
             )
         )

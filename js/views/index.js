@@ -4,5 +4,5 @@ require("./home");
 require("./services");
 require("./testimonials");
 require("./residential_gallery");
-require("./residential_gallery-slider");
+require("./residential_gallery-viewer");
 require("./not_found");

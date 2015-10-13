@@ -13,7 +13,7 @@ app.router.route(
         });
         app.dispatcher.handleViewAction({
             actionType: virtModal.ModalStore.consts.MODAL_OPEN,
-            name: "residential_gallery-slider",
+            name: "residential_gallery-viewer",
             modalDialog: {
                 margin: "0px",
                 width: "100%"

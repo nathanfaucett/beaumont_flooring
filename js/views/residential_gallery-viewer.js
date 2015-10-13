@@ -1,27 +1,28 @@
 var virt = require("virt"),
     virtModal = require("virt-modal"),
     Modal = require("../components/Modal"),
-    Slider = require("../components/ResidentialGallery/Slider"),
+    ImageView = require("../components/ResidentialGallery/ImageView"),
     app = require("..");
 
 
 app.registerModal(
-    "residential_gallery-slider",
-    function renderResidentialGallerySliderModal(modal, ctx) {
+    "residential_gallery-viewer",
+    function renderResidentialGalleryImageViewModal(modal, ctx) {
         return (
             virt.createView(Modal, {
                 ctx: ctx,
                 i18n: app.i18n,
                 modal: modal,
                 render: function render() {
-                    return virt.createView(Slider, {
+                    return virt.createView(ImageView, {
+                        modal: modal,
                         id: ctx.params.id
                     });
                 }
             })
         );
     },
-    function onCloseResidentialGallerySlider(modal /*, ctx */ ) {
+    function onCloseResidentialGalleryImageView(modal /*, ctx */ ) {
         app.dispatcher.handleViewAction({
             actionType: virtModal.ModalStore.consts.MODAL_CLOSE,
             id: modal.id

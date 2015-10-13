@@ -60,7 +60,7 @@ ServicesPrototype.getStyles = function() {
             li: {
                 fontWeight: "500",
                 textTransform: "uppercase",
-                fontSize: "1.75em",
+                fontSize: "1.65em",
                 padding: "0 16px",
                 display: "inline-block"
             },
@@ -70,7 +70,7 @@ ServicesPrototype.getStyles = function() {
                 fontSize: "1.175em",
                 background: theme.palette.canvasColor,
                 margin: "0 32px",
-                padding: "32px"
+                padding: "16px 32px 32px"
             },
             sec: {
                 position: "relative"
@@ -87,7 +87,14 @@ ServicesPrototype.getStyles = function() {
                 left: "-48px"
             },
             secBody: {
-                paddingTop: "64px"
+                paddingTop: "48px",
+                paddingBottom: "16px"
+            },
+            secBodyTop: {
+                paddingTop: "48px"
+            },
+            secBodyBottom: {
+                paddingBottom: "16px"
             }
         };
 
@@ -174,12 +181,30 @@ ServicesPrototype.render = function() {
                     }, i18n("services.header.carpet_tile")),
                     virt.createView("li", {
                         style: styles.li
-                    }, i18n("services.header.vinyl"))
+                    }, i18n("services.header.vinyl")),
+                    virt.createView("li", {
+                        style: styles.li
+                    }, i18n("services.header.hardwood"))
                 )
             ),
             virt.createView("div", {
                     style: styles.body
                 },
+
+                virt.createView("div", {
+                        style: styles.sec
+                    },
+                    virt.createView("h3", {
+                        style: styles.secHeader
+                    }, i18n("services.residential_header")),
+                    virt.createView("p", {
+                        style: styles.secBodyTop
+                    }, i18n("services.residential_body0")),
+                    virt.createView("p", {
+                        style: styles.secBodyBottom
+                    }, i18n("services.residential_body1"))
+                ),
+
                 virt.createView("div", {
                         style: styles.sec
                     },

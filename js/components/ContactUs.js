@@ -128,6 +128,10 @@ ContactUsPrototype.getStyles = function() {
     css.boxShadow(styles.formHeader, theme.styles.boxShadow);
     css.boxShadow(styles.headerImg, theme.styles.boxShadow);
 
+    css.borderRadius(styles.formSubmit, "0px");
+    css.borderRadius(styles.formInput, "0px");
+    css.borderRadius(styles.formTextArea, "0px");
+
     return styles;
 };
 

@@ -39,12 +39,12 @@
     "native.less": "git://github.com/nathanfaucett/native.less.git",
     "object-map": "git://github.com/nathanfaucett/object-map.git",
     "page": "git://github.com/nathanfaucett/page.git",
-    "parallel": "git://github.com/nathanfaucett/parallel.git",
     "prop_types": "git://github.com/nathanfaucett/prop_types.git",
     "request": "git://github.com/nathanfaucett/request.git",
     "theme": "git://github.com/nathanfaucett/theme.git",
     "values": "git://github.com/nathanfaucett/values.git",
     "virt": "git://github.com/nathanfaucett/virt.git",
+    "virt-dom": "git://github.com/nathanfaucett/virt-dom.git",
     "virt-modal": "git://github.com/nathanfaucett/virt-modal.git"
   }
 }
