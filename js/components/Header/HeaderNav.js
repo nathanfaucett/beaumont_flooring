@@ -121,11 +121,11 @@ HeaderNavPrototype.render = function() {
                 })
             ),
             virt.createView(Link, {
+                    style: styles.menu,
                     onClick: this.onClickMenu,
                     hoverOpacity: 0.5
                 },
                 virt.createView("img", {
-                    style: styles.menu,
                     src: "img/menu.png"
                 })
             )
