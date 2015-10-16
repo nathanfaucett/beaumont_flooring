@@ -1,4 +1,5 @@
 var virt = require("virt"),
+    css = require("css"),
     propTypes = require("prop_types"),
     extend = require("extend");
 
@@ -119,6 +120,9 @@ LinkPrototype.getStyle = function() {
 
     if (state.hover) {
         styles.color = props.hoverColor || theme.hoverColor || theme.color;
+        if (props.hoverOpacity) {
+            css.opacity(styles, props.hoverOpacity);
+        }
     }
     if (state.focus) {
         styles.color = props.focusColor || theme.focusColor || theme.color;

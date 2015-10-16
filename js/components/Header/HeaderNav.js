@@ -1,4 +1,5 @@
 var virt = require("virt"),
+    css = require("css"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
     extend = require("extend"),
@@ -13,7 +14,17 @@ module.exports = HeaderNav;
 
 
 function HeaderNav(props, children, context) {
+    var _this = this;
+
     virt.Component.call(this, props, children, context);
+
+    this.state = {
+        opened: false
+    };
+
+    this.onClickMenu = function(e) {
+        return _this.__onClickMenu(e);
+    };
 }
 virt.Component.extend(HeaderNav, "HeaderNav");
 
@@ -26,12 +37,22 @@ HeaderNav.contextTypes = {
 
 HeaderNavPrototype = HeaderNav.prototype;
 
+HeaderNavPrototype.__onClickMenu = function() {
+    this.setState({
+        opened: !this.state.opened
+    });
+};
+
 HeaderNavPrototype.getStyles = function() {
     var context = this.context,
         size = context.size,
         theme = context.theme,
         styles = {
+            root: {
+                textAlign: "center"
+            },
             ul: {
+                overflow: "hidden",
                 textAlign: "center"
             },
             li: {
@@ -41,11 +62,25 @@ HeaderNavPrototype.getStyles = function() {
                 fontSize: "1.25em",
                 color: theme.palette.accent2Color,
                 padding: "12px 16px"
+            },
+            menu: {
+                padding: "8px 0px 16px",
+                display: "none"
             }
         };
 
+    css.transition(styles.ul, "max-height 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95)");
+
     if (size.width < 640) {
         styles.li.display = "block";
+
+        if (this.state.opened) {
+            styles.ul.maxHeight = "1024px";
+        } else {
+            styles.ul.maxHeight = "0";
+        }
+
+        delete styles.menu.display;
     }
 
     return styles;
@@ -61,7 +96,7 @@ HeaderNavPrototype.render = function() {
     return (
         virt.createView("div", {
                 className: "HeaderNav",
-                style: styles.nav
+                style: styles.root
             },
             virt.createView("ul", {
                     style: styles.ul
@@ -83,6 +118,15 @@ HeaderNavPrototype.render = function() {
                             href: link.path
                         }, i18n(link.name))
                     );
+                })
+            ),
+            virt.createView(Link, {
+                    onClick: this.onClickMenu,
+                    hoverOpacity: 0.5
+                },
+                virt.createView("img", {
+                    style: styles.menu,
+                    src: "img/menu.png"
                 })
             )
         )

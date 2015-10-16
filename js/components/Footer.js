@@ -6,7 +6,12 @@ var virt = require("virt"),
     links = require("../utils/links");
 
 
-var FooterPrototype;
+var FooterPrototype,
+    ICON_LINKS = [{
+        id: "facebook",
+        src: "img/icon-facebook.png",
+        href: "https://www.facebook.com"
+    }];
 
 
 module.exports = Footer;
@@ -67,19 +72,29 @@ FooterPrototype.getStyles = function() {
             },
             li: {
                 display: "inline-block",
-                marginLeft: "4px"
+                marginLeft: "4px",
+                marginTop: "4px"
             },
             link: {
                 fontSize: "1em",
                 fontWeight: "bold",
                 background: theme.palette.primary1Color,
                 padding: "8px 10px"
+            },
+            iconLinks: {
+                textAlign: "right"
+            },
+            iconLink: {
+                width: "32px",
+                height: "32px",
+                display: "inline-block"
             }
         };
 
     if (size.width < 768) {
         styles.copyright.textAlign = "center";
         styles.designedby.textAlign = "center";
+        styles.iconLinks.textAlign = "center";
     }
 
     if (size.width < 640) {
@@ -170,6 +185,29 @@ FooterPrototype.render = function() {
                     className: "grid",
                     style: styles.footerBottom
                 },
+                virt.createView("ul", {
+                        className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+                        style: styles.iconLinks
+                    },
+                    arrayMap(ICON_LINKS, function(link) {
+                        return (
+                            virt.createView("li", {
+                                    key: link.id,
+                                    style: styles.iconLink
+                                },
+                                virt.createView(Link, {
+                                        href: link.href,
+                                        target: "_blank",
+                                        hoverOpacity: 0.5
+                                    },
+                                    virt.createView("img", {
+                                        src: link.src
+                                    })
+                                )
+                            )
+                        );
+                    })
+                ),
                 virt.createView("div", {
                         className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
                         style: styles.copyright

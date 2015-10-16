@@ -41,7 +41,7 @@ app.init = function(config) {
     app.config = config;
 
     request.defaults.headers["Content-Type"] = "application/json";
-    request.defaults.withCredentials = false;
+    request.defaults.withCredentials = true;
 
     page.on("request", function onRequest(ctx) {
         dispatcher.handleViewAction({

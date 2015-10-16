@@ -194,7 +194,8 @@ HomePrototype.render = function() {
                         },
                         i18n("home.commitment_body"),
                         virt.createView(Link, {
-                            color: theme.palette.accent2Color,
+                            color: theme.palette.primary1Color,
+                            hoverColor: theme.palette.accent2Color,
                             href: "/about_us"
                         }, i18n("home.commitment_body_here")),
                         "."

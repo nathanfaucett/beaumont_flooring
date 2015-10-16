@@ -106,12 +106,7 @@ ServicesPrototype.getStyles = function() {
 
     if (size.width < 480) {
         styles.li.display = "block";
-        styles.liMid = styles.li;
-    } else {
-        styles.liMid = extend({
-            borderLeft: "2px solid " + theme.palette.accent2Color,
-            borderRight: "2px solid " + theme.palette.accent2Color
-        }, styles.li);
+        delete styles.li.borderRight;
     }
 
     return styles;

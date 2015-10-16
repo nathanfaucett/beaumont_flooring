@@ -22,7 +22,7 @@
         "senior_body": "We have proven success in completing installations at numerous Senior care facilities over the last 10 years. We have ample experience in working with senior care facilities and its residents. We are conscious of the needs and essential daily requirements of the senior care staff and residents so that the facility can remain fully operational during renovations.",
 
         "retail_header": "Retail",
-        "retail_body": "So that the retail facility can remain fully operational and not experience a loss of Revenue we work off hours only pulling up areas that we can have completed prior to opening time.",
+        "retail_body": "So that the retail facility can remain fully operational and not experience a loss of revenue we work off hours only pulling up areas that we can have completed prior to opening time.",
 
         "hospitality_header": "Hospitality",
         "hospitality_body": "We have over two decades of experience in meeting the demands and installation schedules that are necessary to complete a hospitality renovation or new construction. We work closely with the General Contractor or directly with the Facility to devise a schedule to minimize interruptions and increase efficiency."
