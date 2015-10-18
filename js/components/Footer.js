@@ -82,7 +82,7 @@ FooterPrototype.getStyles = function() {
                 padding: "8px 10px"
             },
             iconLinks: {
-                textAlign: "right"
+                textAlign: "left"
             },
             iconLink: {
                 width: "32px",
