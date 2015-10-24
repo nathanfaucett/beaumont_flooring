@@ -10,7 +10,7 @@ var FooterPrototype,
     ICON_LINKS = [{
         id: "facebook",
         src: "img/icon-facebook.png",
-        href: "https://www.facebook.com"
+        href: "https://www.facebook.com/bomontflooring"
     }];
 
 

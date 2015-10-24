@@ -108,7 +108,6 @@ HomePrototype.getStyles = function() {
         styles.qualityImg.right = "inherit";
         styles.qualityImg.width = "inherit";
         styles.halfText.width = "inherit";
-        styles.secBody.textAlign = "center";
     }
 
     if (size.width < 480) {
