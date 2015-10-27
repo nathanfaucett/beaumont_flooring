@@ -3,6 +3,7 @@ var virt = require("virt"),
     propTypes = require("prop_types"),
     arrayMap = require("array-map"),
     Item = require("./Item"),
+    Link = require("../Link"),
     ResidentialGalleryStore = require("../../stores/ResidentialGalleryStore");
 
 
@@ -81,6 +82,9 @@ ResidentialGalleryPrototype.getStyles = function() {
                 minHeight: "96px",
                 width: "100%"
             },
+            milestoneloans: {
+                width: "100%"
+            },
             body: {
                 zIndex: "999",
                 position: "relative",
@@ -145,7 +149,7 @@ ResidentialGalleryPrototype.render = function() {
                 ),
                 virt.createView("img", {
                     style: styles.img,
-                    src: "img/wood.jpg"
+                    src: "img/fourfloors.jpg"
                 })
             ),
             virt.createView("div", {
@@ -174,9 +178,20 @@ ResidentialGalleryPrototype.render = function() {
                     })
                 )
             ),
+            virt.createView(Link, {
+                    style: styles.milestoneloans,
+                    target: "_blank",
+                    href: "http://milestoneloans.net",
+                    src: "img/fourfloors.jpg"
+                },
+                virt.createView("img", {
+                    style: styles.milestoneloans,
+                    src: "img/milestoneloans.jpg"
+                })
+            ),
             virt.createView("img", {
                 style: styles.img,
-                src: "img/wood.jpg"
+                src: "img/fourfloors.jpg"
             })
         )
     );

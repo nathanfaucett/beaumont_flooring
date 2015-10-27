@@ -1,6 +1,7 @@
 var virt = require("virt"),
     css = require("css"),
-    propTypes = require("prop_types");
+    propTypes = require("prop_types"),
+    Link = require("./Link");
 
 
 var ContactUsPrototype;
@@ -64,6 +65,9 @@ ContactUsPrototype.getStyles = function() {
             },
             img: {
                 minHeight: "96px",
+                width: "100%"
+            },
+            milestoneloans: {
                 width: "100%"
             },
             header: {
@@ -229,9 +233,20 @@ ContactUsPrototype.render = function() {
                     })
                 )
             ),
+            virt.createView(Link, {
+                    style: styles.milestoneloans,
+                    target: "_blank",
+                    href: "http://milestoneloans.net",
+                    src: "img/fourfloors.jpg"
+                },
+                virt.createView("img", {
+                    style: styles.milestoneloans,
+                    src: "img/milestoneloans.jpg"
+                })
+            ),
             virt.createView("img", {
                 style: styles.img,
-                src: "img/wood.jpg"
+                src: "img/fourfloors.jpg"
             })
         )
     );

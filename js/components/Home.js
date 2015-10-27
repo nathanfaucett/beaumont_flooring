@@ -48,6 +48,9 @@ HomePrototype.getStyles = function() {
                 minHeight: "96px",
                 width: "100%"
             },
+            milestoneloans: {
+                width: "100%"
+            },
             body: {},
             intro: {
                 padding: "8px 24px"
@@ -153,7 +156,7 @@ HomePrototype.render = function() {
                 ),
                 virt.createView("img", {
                     style: styles.img,
-                    src: "img/wood.jpg"
+                    src: "img/fourfloors.jpg"
                 })
             ),
             virt.createView("div", {
@@ -232,9 +235,20 @@ HomePrototype.render = function() {
                     }, i18n("home.timely_body"))
                 )
             ),
+            virt.createView(Link, {
+                    style: styles.milestoneloans,
+                    target: "_blank",
+                    href: "http://milestoneloans.net",
+                    src: "img/fourfloors.jpg"
+                },
+                virt.createView("img", {
+                    style: styles.milestoneloans,
+                    src: "img/milestoneloans.jpg"
+                })
+            ),
             virt.createView("img", {
                 style: styles.img,
-                src: "img/wood.jpg"
+                src: "img/fourfloors.jpg"
             })
         )
     );
