@@ -1,4 +1,5 @@
 var RouteStore = require("../stores/RouteStore"),
+    scrollToTop = require("../utils/scrollToTop"),
     app = require("../index");
 
 
@@ -12,6 +13,7 @@ app.router.use(
                 state: "not_found",
                 ctx: ctx
             });
+            scrollToTop();
             ctx.end();
             next();
         }

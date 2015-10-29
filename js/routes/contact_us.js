@@ -1,4 +1,5 @@
 var RouteStore = require("../stores/RouteStore"),
+    scrollToTop = require("../utils/scrollToTop"),
     app = require("../index");
 
 
@@ -10,6 +11,7 @@ app.router.route(
             state: "contact_us",
             ctx: ctx
         });
+        scrollToTop();
         ctx.end();
         next();
     }

@@ -1,5 +1,6 @@
 var i18n = require("i18n"),
     request = require("request"),
+    isString = require("is_string"),
     UserStore = require("../../stores/UserStore");
 
 
@@ -18,6 +19,9 @@ function i18nMiddleware(ctx, next) {
         request.get("locale/" + locale + ".json", {
             success: function(response) {
                 cache[locale] = true;
+                if (isString(response.data)) {
+                    response.data = JSON.parse(response.data);
+                }
                 i18n.add(locale, response.data);
                 next();
             },
