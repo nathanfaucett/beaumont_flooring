@@ -35,6 +35,9 @@ function Item(props, children, context) {
     this.onClick = function(e) {
         return _this.__onClick(e);
     };
+    this.onLoad = function(e) {
+        return _this.__onLoad(e);
+    };
 }
 virt.Component.extend(Item, "Item");
 
@@ -49,12 +52,8 @@ Item.contextTypes = {
     theme: propTypes.object.isRequired
 };
 
-ItemPrototype.componentDidMount = function() {
-    var _this = this;
-
-    virtDOM.findDOMNode(this.refs.img).onload = function onLoad() {
-        _this.getImageDimensions();
-    };
+ItemPrototype.__onLoad = function() {
+    this.getImageDimensions();
 };
 
 ItemPrototype.__onMouseOver = function() {
@@ -150,6 +149,7 @@ ItemPrototype.render = function() {
                     style: styles.imgWrap
                 },
                 virt.createView("img", {
+                    onLoad: this.onLoad,
                     style: styles.img,
                     ref: "img",
                     src: item.thumbnail

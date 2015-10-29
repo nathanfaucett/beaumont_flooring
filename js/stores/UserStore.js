@@ -1,7 +1,7 @@
 var cookies = require("cookies"),
     indexOf = require("index_of"),
     emptyFunction = require("empty_function"),
-    app = require("../index"),
+    app = require("../"),
     Store = require("./Store");
 
 

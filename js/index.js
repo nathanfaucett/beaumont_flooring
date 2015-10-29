@@ -25,7 +25,6 @@ App = require("./components/App");
 RouteStore = require("./stores/RouteStore");
 UserStore = require("./stores/UserStore");
 
-
 app.config = null;
 app.Component = App;
 app.page = page;

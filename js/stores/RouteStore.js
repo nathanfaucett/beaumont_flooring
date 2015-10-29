@@ -1,5 +1,5 @@
 var Store = require("./Store"),
-    app = require("../index");
+    app = require("../");
 
 
 var RouteStore = module.exports = new Store(),
@@ -27,9 +27,9 @@ function update(ctx, state) {
 }
 
 function handleContext(ctx) {
-    app.router.handler(ctx, function(err) {
-        if (err) {
-            throw err;
+    app.router.handler(ctx, function(error) {
+        if (error) {
+            throw error;
         }
     });
 }
