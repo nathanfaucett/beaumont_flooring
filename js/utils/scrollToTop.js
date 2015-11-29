@@ -1,4 +1,5 @@
-var requestAnimationFrame = require("request_animation_frame");
+var requestAnimationFrame = require("request_animation_frame"),
+    scrollTo = require("./scrollTo");
 
 
 var DELTA_TIME = 1000 / 60;
@@ -28,11 +29,4 @@ function scrollToTop() {
     }
 
     requestAnimationFrame(scroll);
-}
-
-
-function scrollTo(x, y) {
-    try {
-        window.scrollTo(x, y);
-    } catch (e) {}
 }

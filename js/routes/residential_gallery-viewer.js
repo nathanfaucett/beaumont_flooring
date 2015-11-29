@@ -1,5 +1,6 @@
 var virtModal = require("virt-modal"),
     RouteStore = require("../stores/RouteStore"),
+    scrollTo = require("../utils/scrollTo"),
     app = require("../index");
 
 
@@ -25,6 +26,7 @@ app.router.route(
                 id: ctx.params.id
             }
         });
+        scrollTo(0, window.scrollY + 1);
         ctx.end();
         next();
     }

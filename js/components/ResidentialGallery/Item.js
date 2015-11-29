@@ -53,7 +53,9 @@ Item.contextTypes = {
 };
 
 ItemPrototype.__onLoad = function() {
-    this.getImageDimensions();
+    if (!this.state.loaded) {
+        this.getImageDimensions();
+    }
 };
 
 ItemPrototype.__onMouseOver = function() {

@@ -4,7 +4,8 @@ module.exports = function(grunt) {
         jsbeautifier: {
             files: [
                 "Gruntfile.js",
-                "js/**/*.js"
+                "src/**/*.js",
+                "test/**/*.js"
             ]
         },
         jshint: {
@@ -19,7 +20,8 @@ module.exports = function(grunt) {
             },
             files: [
                 "Gruntfile.js",
-                "js/**/*.js"
+                "src/**/*.js",
+                "test/**/*.js"
             ]
         }
     });
