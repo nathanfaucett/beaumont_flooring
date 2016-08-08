@@ -1,7 +1,7 @@
-var virt = require("virt"),
-    css = require("css"),
-    propTypes = require("prop_types"),
-    arrayMap = require("array-map"),
+var virt = require("@nathanfaucett/virt"),
+    css = require("@nathanfaucett/css"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    arrayMap = require("@nathanfaucett/array-map"),
     Item = require("./Item"),
     Link = require("../Link"),
     ResidentialGalleryStore = require("../../stores/ResidentialGalleryStore");

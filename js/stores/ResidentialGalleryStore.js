@@ -1,10 +1,8 @@
-var values = require("values"),
-    Store = require("./Store");
+var values = require("@nathanfaucett/values"),
+    Store = require("@nathanfaucett/apt").Store;
 
 
-var ResidentialGalleryStore = module.exports = new Store(),
-
-    _items = {
+var _items = {
         1: {
             id: 1,
             thumbnail: "img/gallery/Guest complete.jpg",
@@ -23,18 +21,29 @@ var ResidentialGalleryStore = module.exports = new Store(),
     };
 
 
-ResidentialGalleryStore.all = function(callback) {
+function ResidentialGalleryStore() {
+    Store.call(this);
+}
+Store.extend(ResidentialGalleryStore, "ResidentialGalleryStore", []);
+
+
+ResidentialGalleryStore.prototype.all = function(callback) {
     callback(undefined, values(_items));
 };
 
-ResidentialGalleryStore.get = function(id, callback) {
+ResidentialGalleryStore.prototype.get = function(id, callback) {
     callback(undefined, _items[id]);
 };
 
-ResidentialGalleryStore.toJSON = function() {
+ResidentialGalleryStore.prototype.toJSON = function() {
     return _items;
 };
 
-ResidentialGalleryStore.fromJSON = function(json) {
+ResidentialGalleryStore.prototype.fromJSON = function(json) {
     _items = json;
 };
+
+ResidentialGalleryStore.prototype.handler = function() {};
+
+
+module.exports = new ResidentialGalleryStore();

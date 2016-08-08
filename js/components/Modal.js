@@ -1,5 +1,5 @@
-var virt = require("virt"),
-    propTypes = require("prop_types"),
+var virt = require("@nathanfaucett/virt"),
+    propTypes = require("@nathanfaucett/prop_types"),
     app = require("..");
 
 
@@ -10,7 +10,13 @@ module.exports = Modal;
 
 
 function Modal(props, children, context) {
+    var _this = this;
+
     virt.Component.call(this, props, children, context);
+
+    this.onClose = function() {
+        return _this.__onClose();
+    };
 }
 virt.Component.extend(Modal, "Modal");
 
@@ -38,11 +44,19 @@ Modal.getChildContext = function() {
 ModalPrototype = Modal.prototype;
 
 ModalPrototype.componentDidMount = function() {
-    app.page.on("request", this.props.modal.close);
+    app.page.on("request", this.onClose);
 };
 
 ModalPrototype.componentWillUnmount = function() {
-    app.page.off("request", this.props.modal.close);
+    app.page.off("request", this.onClose);
+};
+
+ModalPrototype.__onClose = function() {
+    var modal = this.props.modal;
+
+    if (!modal.willClose) {
+        modal.close();
+    }
 };
 
 ModalPrototype.getStyles = function() {

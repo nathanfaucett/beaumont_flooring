@@ -1,7 +1,7 @@
-var virt = require("virt"),
-    propTypes = require("prop_types"),
-    arrayMap = require("array-map"),
-    extend = require("extend"),
+var virt = require("@nathanfaucett/virt"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    arrayMap = require("@nathanfaucett/array-map"),
+    extend = require("@nathanfaucett/extend"),
     Link = require("./Link"),
     links = require("../utils/links");
 

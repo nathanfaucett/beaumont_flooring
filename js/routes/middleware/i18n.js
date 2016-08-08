@@ -1,6 +1,6 @@
-var i18n = require("i18n"),
-    request = require("request"),
-    isString = require("is_string"),
+var i18n = require("@nathanfaucett/i18n"),
+    request = require("@nathanfaucett/request"),
+    isString = require("@nathanfaucett/is_string"),
     UserStore = require("../../stores/UserStore");
 
 

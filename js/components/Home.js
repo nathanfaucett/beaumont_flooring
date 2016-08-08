@@ -1,6 +1,6 @@
-var virt = require("virt"),
-    css = require("css"),
-    propTypes = require("prop_types"),
+var virt = require("@nathanfaucett/virt"),
+    css = require("@nathanfaucett/css"),
+    propTypes = require("@nathanfaucett/prop_types"),
     Link = require("./Link");
 
 

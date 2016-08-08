@@ -1,7 +1,7 @@
-var virt = require("virt"),
-    css = require("css"),
-    virtModal = require("virt-modal"),
-    propTypes = require("prop_types"),
+var virt = require("@nathanfaucett/virt"),
+    css = require("@nathanfaucett/css"),
+    virtModal = require("@nathanfaucett/virt-modal"),
+    propTypes = require("@nathanfaucett/prop_types"),
     app = require("../.."),
     Header = require("../Header"),
     Footer = require("../Footer");

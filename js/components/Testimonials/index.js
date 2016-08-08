@@ -1,7 +1,7 @@
-var virt = require("virt"),
-    css = require("css"),
-    propTypes = require("prop_types"),
-    arrayMap = require("array-map"),
+var virt = require("@nathanfaucett/virt"),
+    css = require("@nathanfaucett/css"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    arrayMap = require("@nathanfaucett/array-map"),
     Testimonial = require("./Testimonial"),
     Link = require("../Link"),
     TestimonialStore = require("../../stores/TestimonialStore");

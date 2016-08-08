@@ -1,19 +1,20 @@
-var Store = require("./Store"),
+var Store = require("@nathanfaucett/apt").Store,
     app = require("../");
 
 
-var RouteStore = module.exports = new Store(),
-
-    _route = {
+var _route = {
         context: {},
         state: null
-    },
+    };
 
-    consts = RouteStore.setConsts([
-        "ROUTE_CHANGE",
-        "ROUTE_UPDATE"
-    ]);
 
+function RouteStore() {
+    Store.call(this);
+}
+Store.extend(RouteStore, "RouteStore", [
+    "CHANGE",
+    "UPDATE"
+]);
 
 function update(ctx, state) {
     var context = _route.context;
@@ -34,29 +35,32 @@ function handleContext(ctx) {
     });
 }
 
-RouteStore.getState = function() {
+RouteStore.prototype.getState = function() {
     return _route.state;
 };
 
-RouteStore.getContext = function() {
+RouteStore.prototype.getContext = function() {
     return _route.context;
 };
 
-RouteStore.toJSON = function() {
+RouteStore.prototype.toJSON = function() {
     return _route;
 };
 
-RouteStore.fromJSON = function(json) {
+RouteStore.prototype.fromJSON = function(json) {
     _route = json;
 };
 
-RouteStore.register(function onRoutePayload(payload) {
-    var action = payload.action;
+RouteStore.prototype.handler = function onRoutePayload(action) {
+    var consts = this.consts;
 
-    if (action.actionType === consts.ROUTE_CHANGE) {
+    if (action.type === consts.CHANGE) {
         handleContext(action.ctx);
-    } else if (action.actionType === consts.ROUTE_UPDATE) {
+    } else if (action.type === consts.UPDATE) {
         update(action.ctx, action.state);
-        RouteStore.emitChange();
+        this.emitChange();
     }
-});
+};
+
+
+module.exports = new RouteStore();

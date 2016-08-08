@@ -1,8 +1,8 @@
-var virt = require("virt"),
-    virtDOM = require("virt-dom"),
-    css = require("css"),
-    propTypes = require("prop_types"),
-    domDimensions = require("dom_dimensions"),
+var virt = require("@nathanfaucett/virt"),
+    virtDOM = require("@nathanfaucett/virt-dom"),
+    css = require("@nathanfaucett/css"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    domDimensions = require("@nathanfaucett/dom_dimensions"),
     getImageDimensions = require("../../utils/getImageDimensions");
 
 

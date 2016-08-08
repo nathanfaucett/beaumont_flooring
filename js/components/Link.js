@@ -1,7 +1,7 @@
-var virt = require("virt"),
-    css = require("css"),
-    propTypes = require("prop_types"),
-    extend = require("extend");
+var virt = require("@nathanfaucett/virt"),
+    css = require("@nathanfaucett/css"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    extend = require("@nathanfaucett/extend");
 
 
 var LinkPrototype;

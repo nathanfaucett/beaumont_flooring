@@ -1,10 +1,8 @@
-var values = require("values"),
-    Store = require("./Store");
+var values = require("@nathanfaucett/values"),
+    Store = require("@nathanfaucett/apt").Store;
 
 
-var TestimonialStore = module.exports = new Store(),
-
-    _testimonials = {
+var _testimonials = {
         1: {
             id: 1,
             text: (
@@ -33,18 +31,29 @@ var TestimonialStore = module.exports = new Store(),
     };
 
 
-TestimonialStore.all = function(callback) {
+function TestimonialStore() {
+    Store.call(this);
+}
+Store.extend(TestimonialStore, "TestimonialStore", []);
+
+
+TestimonialStore.prototype.all = function(callback) {
     callback(undefined, values(_testimonials));
 };
 
-TestimonialStore.get = function(id, callback) {
+TestimonialStore.prototype.get = function(id, callback) {
     callback(undefined, _testimonials[id]);
 };
 
-TestimonialStore.toJSON = function() {
+TestimonialStore.prototype.toJSON = function() {
     return _testimonials;
 };
 
-TestimonialStore.fromJSON = function(json) {
+TestimonialStore.prototype.fromJSON = function(json) {
     _testimonials = json;
 };
+
+TestimonialStore.prototype.handler = function() {};
+
+
+module.exports = new TestimonialStore();

@@ -8,8 +8,8 @@ app.router.use(
         if (ctx.route) {
             next();
         } else {
-            app.dispatcher.handleViewAction({
-                actionType: RouteStore.consts.ROUTE_UPDATE,
+            app.dispatcher.dispatch({
+                type: RouteStore.consts.UPDATE,
                 state: "not_found",
                 ctx: ctx
             });

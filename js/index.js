@@ -1,87 +1,109 @@
-var EventEmitter = require("event_emitter"),
-    page = require("page"),
-    extend = require("extend"),
-    virtModal = require("virt-modal"),
-    objectMap = require("object-map"),
-    request = require("request"),
-    i18n = require("i18n"),
+var apt = require("@nathanfaucett/apt"),
+    page = require("@nathanfaucett/page/src/server"),
+    cookies = require("@nathanfaucett/cookies"),
+    request = require("@nathanfaucett/request"),
+    i18n = require("@nathanfaucett/i18n"),
+    extend = require("@nathanfaucett/extend"),
+    objectMap = require("@nathanfaucett/object-map"),
+    virtModal = require("@nathanfaucett/virt-modal"),
 
-    dispatcher = require("./dispatcher"),
     router = require("./router"),
 
-    i18nBound, App, RouteStore, UserStore;
+    i18nBound, RouteStore, UserStore;
 
 
-var app = new EventEmitter(-1),
-    pages = {},
-    modals = {};
+var Application = apt.Application,
+    app, BomontApplicationPrototype;
 
 
-module.exports = app;
+function BomontApplication() {
+
+    Application.call(this);
+
+    this.router = router;
+
+    this.config = null;
+    this.Component = null;
+    this.page = page;
+    this.i18n = null;
+
+    this.pages = {};
+    this.modals = {};
+}
+Application.extend(BomontApplication, "Bomont.Application");
+BomontApplicationPrototype = BomontApplication.prototype;
 
 
+app = module.exports = new BomontApplication();
+
+
+app.Component = require("./components/App");
 i18nBound = require("./utils/i18n");
-App = require("./components/App");
 RouteStore = require("./stores/RouteStore");
 UserStore = require("./stores/UserStore");
 
-app.config = null;
-app.Component = App;
-app.page = page;
-app.i18n = i18nBound;
-app.dispatcher = dispatcher;
-app.router = router;
 
+BomontApplicationPrototype.init = function(config) {
+    var _this = this,
+        dispatcher = this.dispatcher;
 
-app.init = function(config) {
-    var dispatcher = app.dispatcher,
-        page = app.page;
+    this.i18n = i18nBound;
+    this.router = router;
 
-    app.config = config;
+    this.config = config;
 
     request.defaults.headers["Content-Type"] = "application/json";
     request.defaults.withCredentials = true;
 
+    this.registerStore(require("./stores/ResidentialGalleryStore"));
+    this.registerStore(require("./stores/RouteStore"));
+    this.registerStore(require("./stores/TestimonialStore"));
+    this.registerStore(require("./stores/UserStore"));
+    this.registerStore(virtModal.ModalStore);
+
+
     page.on("request", function onRequest(ctx) {
-        dispatcher.handleViewAction({
-            actionType: RouteStore.consts.ROUTE_CHANGE,
+        dispatcher.dispatch({
+            type: RouteStore.consts.CHANGE,
             ctx: ctx
         });
     });
-
-    dispatcher.register(virtModal.ModalStore.registerCallback);
 
     UserStore.on("changeLocale", function onChangeLocale() {
         page.reload();
     });
 
-    i18n.flatMode(config.flatLocaleMode);
     i18n.throwMissingError(config.throwMissingTranslationError);
-    page.html5Mode(config.html5Mode);
 
-    app.emit("init");
+    dispatcher.on("dispatch", function onDispatch() {
+        cookies.set("Bomont.state", _this.toJSON());
+    });
+    this.fromJSON(cookies.get("Bomont.state"));
 
-    page.init();
+    if (config.env !== "production") {
+        global.reset = function() {
+            cookies.remove("Bomont.state");
+            location.reload();
+        };
+    }
+
+    this.emit("init");
 };
 
-app.registerPage = function(name, render) {
-    pages[name] = render;
+BomontApplicationPrototype.registerPage = function(name, render) {
+    this.pages[name] = render;
 };
 
-app.registerModal = function(name, render, onClose) {
-    modals[name] = {
+BomontApplicationPrototype.registerModal = function(name, render, onClose) {
+    this.modals[name] = {
         name: name,
         render: render,
         onClose: onClose
     };
 };
 
-app.getPage = function(name) {
-    return pages[name];
-};
-
-app.getModals = function(ctx) {
-    return objectMap(modals, function eachModal(m) {
+BomontApplicationPrototype.getModals = function(ctx) {
+    return objectMap(this.modals, function eachModal(m) {
         var result = extend({}, m),
             modalRender = m.render,
             modalOnClose = m.onClose;
@@ -96,6 +118,10 @@ app.getModals = function(ctx) {
 
         return result;
     });
+};
+
+BomontApplicationPrototype.getPage = function(name) {
+    return this.pages[name];
 };
 
 require("./views");

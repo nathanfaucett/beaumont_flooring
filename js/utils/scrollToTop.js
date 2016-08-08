@@ -1,4 +1,4 @@
-var requestAnimationFrame = require("request_animation_frame"),
+var requestAnimationFrame = require("@nathanfaucett/request_animation_frame"),
     scrollTo = require("./scrollTo");
 
 

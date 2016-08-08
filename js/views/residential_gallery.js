@@ -1,4 +1,4 @@
-var virt = require("virt"),
+var virt = require("@nathanfaucett/virt"),
     app = require("../index"),
     ResidentialGallery = require("../components/ResidentialGallery"),
     LayoutApp = require("../components/layouts/LayoutApp");

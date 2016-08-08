@@ -1,4 +1,4 @@
-var virtModal = require("virt-modal"),
+var virtModal = require("@nathanfaucett/virt-modal"),
     RouteStore = require("../stores/RouteStore"),
     scrollTo = require("../utils/scrollTo"),
     app = require("../index");
@@ -7,19 +7,19 @@ var virtModal = require("virt-modal"),
 app.router.route(
     "/residential_gallery/:id[0-9]",
     function handleRoot(ctx, next) {
-        app.dispatcher.handleViewAction({
-            actionType: RouteStore.consts.ROUTE_UPDATE,
+        app.dispatcher.dispatch({
+            type: RouteStore.consts.UPDATE,
             state: "residential_gallery",
             ctx: ctx
         });
-        app.dispatcher.handleViewAction({
-            actionType: virtModal.ModalStore.consts.MODAL_OPEN,
+        app.dispatcher.dispatch({
+            type: virtModal.ModalStore.consts.OPEN,
             name: "residential_gallery-viewer",
-            modalDialog: {
+            dialog: {
                 margin: "0px",
                 width: "100%"
             },
-            modalStyle: {
+            style: {
                 overflow: "auto"
             },
             data: {

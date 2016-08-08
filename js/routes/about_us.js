@@ -6,8 +6,8 @@ var RouteStore = require("../stores/RouteStore"),
 app.router.route(
     "/about_us",
     function handleRoot(ctx, next) {
-        app.dispatcher.handleViewAction({
-            actionType: RouteStore.consts.ROUTE_UPDATE,
+        app.dispatcher.dispatch({
+            type: RouteStore.consts.UPDATE,
             state: "about_us",
             ctx: ctx
         });

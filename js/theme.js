@@ -1,5 +1,5 @@
-var Theme = require("theme"),
-    css = require("css");
+var Theme = require("@nathanfaucett/theme"),
+    css = require("@nathanfaucett/css");
 
 
 var BomontFlooringThemePrototype;

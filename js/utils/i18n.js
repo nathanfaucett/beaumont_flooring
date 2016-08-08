@@ -1,5 +1,5 @@
-var i18n = require("i18n"),
-    fastSlice = require("fast_slice"),
+var i18n = require("@nathanfaucett/i18n"),
+    fastSlice = require("@nathanfaucett/fast_slice"),
     UserStore = require("../stores/UserStore");
 
 
